@@ -1,0 +1,24 @@
+# Ignore build & user-specific files
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.log
+*.cache
+*.vsidx
+
+# Ignore NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Ignore backup files
+*.bak
+
+# Optional: ignore Rider/JetBrains configs
+.idea/
+
+# Optional: keep only important SQL
+*.sql
+!FishingManagement.sql
