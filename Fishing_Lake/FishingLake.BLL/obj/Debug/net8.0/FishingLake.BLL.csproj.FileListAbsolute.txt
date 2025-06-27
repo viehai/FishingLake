@@ -1,0 +1,15 @@
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\bin\Debug\net8.0\FishingLake.BLL.deps.json
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\bin\Debug\net8.0\FishingLake.BLL.dll
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\bin\Debug\net8.0\FishingLake.BLL.pdb
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\bin\Debug\net8.0\FishingLake.DAL.dll
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\bin\Debug\net8.0\FishingLake.DAL.pdb
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingLake.BLL.csproj.AssemblyReference.cache
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingLake.BLL.GeneratedMSBuildEditorConfig.editorconfig
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingLake.BLL.AssemblyInfoInputs.cache
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingLake.BLL.AssemblyInfo.cs
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingLake.BLL.csproj.CoreCompileInputs.cache
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingL.81A0D6A7.Up2Date
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingLake.BLL.dll
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\refint\FishingLake.BLL.dll
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\FishingLake.BLL.pdb
+E:\Fishing_Lake\Fishing_Lake\FishingLake.BLL\obj\Debug\net8.0\ref\FishingLake.BLL.dll
