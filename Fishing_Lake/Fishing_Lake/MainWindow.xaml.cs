@@ -8,6 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FishingLake.DAL.Models;
+using FishingLake.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fishing_Lake
 {
@@ -16,9 +19,90 @@ namespace Fishing_Lake
     /// </summary>
     public partial class MainWindow : Window
     {
+        public User? CurrentUser { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+            LoadPonds();
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (CurrentUser != null)
+            {
+                WelcomeTextBlock.Text = $"Xin chào, {CurrentUser.Name} 👋";
+            }
+        }
+
+
+        private void LoadPonds()
+        {
+            using (var context = new FishingManagementContext())
+            {
+                var ponds = context.Pond
+                    .Include(p => p.PondFishes)
+                    .ThenInclude(pf => pf.Fish)
+                    .ToList()
+                    .Select(p => new
+                    {
+                        p.Id,
+                        p.Name,
+                        p.Location,
+                        p.Capacity,
+                        FishSpeciesList = string.Join(", ", p.PondFishes.Select(pf => $"{pf.Fish.Name} ({pf.Quantity})"))
+                    }).ToList();
+
+                LakeListView.ItemsSource = ponds;
+            }
+        }
+
+        private void BookLake_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int pondId = (int)button.Tag;
+
+            using (var context = new FishingManagementContext())
+            {
+                var pond = context.Pond.Find(pondId);
+                if (pond == null)
+                {
+                    MessageBox.Show("Hồ không tồn tại!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (CurrentUser == null)
+                {
+                    MessageBox.Show("Không xác định được người dùng!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                int userId = CurrentUser.Id;
+
+                // Tạo booking mới
+                var booking = new Booking
+                {
+                    PondId = pondId,
+                    UserId = userId,
+                    BookingDate = DateOnly.FromDateTime(DateTime.Today), // Sử dụng DateOnly
+                    Status = "Pending",
+                    Price = 100000, // Giá mặc định, có thể lấy từ cấu hình hoặc bảng giá
+                    IsPaid = false,
+                    PaymentMethod = "Cash"
+                };
+
+                context.Bookings.Add(booking);
+                context.SaveChanges();
+
+                MessageBox.Show($"Đã đặt hồ {pond.Name} thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            LoadPonds(); // Làm mới danh sách
+        }
+
+        private void AddLake_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Chức năng thêm hồ câu đang được phát triển!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

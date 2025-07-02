@@ -20,7 +20,7 @@ public partial class FishingManagementContext : DbContext
 
     public virtual DbSet<FishSpecy> FishSpecies { get; set; }
 
-    public virtual DbSet<Pond> Ponds { get; set; }
+    public virtual DbSet<Pond> Pond { get; set; }
 
     public virtual DbSet<PondFish> PondFishes { get; set; }
 
@@ -37,7 +37,7 @@ public partial class FishingManagementContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Bookings__3214EC070A6EFDE6");
 
-            entity.Property(e => e.DurationMinutes).HasDefaultValue(120);
+            
             entity.Property(e => e.IsPaid).HasDefaultValue(false);
             entity.Property(e => e.PaymentMethod)
                 .HasMaxLength(50)

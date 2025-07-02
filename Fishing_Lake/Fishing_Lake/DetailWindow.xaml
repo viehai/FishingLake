@@ -5,8 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
-        Title="DetailWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="DetailWindow" Height="550" Width="900" WindowStartupLocation="CenterScreen" Background="#e0f7fa" ResizeMode="NoResize">
+    <Border CornerRadius="10" BorderBrush="#0288d1" BorderThickness="2" Margin="10" Padding="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="🛠 Tạo / Chỉnh sửa Hồ Câu" 
+                       FontSize="24" FontWeight="Bold" Foreground="#0288d1" 
+                       Margin="0,0,0,20"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <Label Content="Tên hồ:"/>
+                    <TextBox x:Name="txtName" Height="30"/>
+
+                    <Label Content="Vị trí:"/>
+                    <TextBox x:Name="txtLocation" Height="30"/>
+
+                    <Label Content="Sức chứa:"/>
+                    <TextBox x:Name="txtCapacity" Height="30"/>
+
+                    <Label Content="Mô tả:"/>
+                    <TextBox x:Name="txtDescription" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <Label Content="Chủ hồ (Owner ID):"/>
+                    <TextBox x:Name="txtOwnerId" Height="30"/>
+
+                    <Label Content="Loài cá trong hồ:"/>
+                    <DataGrid x:Name="dgFishList" AutoGenerateColumns="False" Height="180" CanUserAddRows="True">
+                        <DataGrid.Columns>
+                            <DataGridComboBoxColumn Header="Loài cá" SelectedValueBinding="{Binding FishId}" 
+                                                    DisplayMemberPath="Name" SelectedValuePath="Id"/>
+                            <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button Content="💾 Lưu hồ câu" Width="120" Margin="0,0,10,0" Background="#0288d1" Foreground="White" Click="SavePond_Click"/>
+                <Button Content="❌ Đóng" Width="80" Click="Close_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

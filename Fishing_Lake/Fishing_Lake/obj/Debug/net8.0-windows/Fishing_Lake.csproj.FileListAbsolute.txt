@@ -1,3 +1,10 @@
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake.csproj.AssemblyReference.cache
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\DetailWindow.g.cs
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\LoginWindow.g.cs
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\MainWindow.g.cs
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\App.g.cs
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake_MarkupCompile.cache
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake_MarkupCompile.lref
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\bin\Debug\net8.0-windows\Fishing_Lake.exe
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\bin\Debug\net8.0-windows\appsettings.json
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\bin\Debug\net8.0-windows\Fishing_Lake.deps.json
@@ -57,13 +64,6 @@ E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\bin\Debug\net8.0-windows\FishingLake.B
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\bin\Debug\net8.0-windows\FishingLake.DAL.dll
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\bin\Debug\net8.0-windows\FishingLake.BLL.pdb
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\bin\Debug\net8.0-windows\FishingLake.DAL.pdb
-E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake.csproj.AssemblyReference.cache
-E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\DetailWindow.g.cs
-E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\LoginWindow.g.cs
-E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\MainWindow.g.cs
-E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\App.g.cs
-E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake_MarkupCompile.cache
-E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake_MarkupCompile.lref
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\DetailWindow.baml
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\LoginWindow.baml
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\MainWindow.baml
@@ -79,3 +79,5 @@ E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\refint\Fishin
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake.pdb
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake.genruntimeconfig.cache
 E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\ref\Fishing_Lake.dll
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\RegisterWindow.g.cs
+E:\Fishing_Lake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\RegisterWindow.baml

@@ -25,7 +25,7 @@
                 <TextBox x:Name="PhoneTextBox" Height="32" FontSize="16" Margin="0,0,0,16"/>
                 <TextBlock Text="Mật khẩu" FontSize="14" Margin="0,0,0,4"/>
                 <PasswordBox x:Name="PasswordBox" Height="32" FontSize="16" Margin="0,0,0,24"/>
-                <Button x:Name="LoginButton" Content="Đăng nhập" Height="36" Background="#0288d1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+                <Button x:Name="LoginButton" Content="Đăng nhập" Height="36" Background="#0288d1" Foreground="White" FontWeight="Bold" FontSize="16" Click="LoginButton_Click"/>
             </StackPanel>
         </Border>
         <Button x:Name="RegisterButton"
@@ -38,7 +38,7 @@
             FontSize="16"
             Margin="0,20,0,0"
             HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"/>
+            VerticalAlignment="Bottom" Click="RegisterButton_Click"/>
         
     </Grid>
 </Window>

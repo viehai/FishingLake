@@ -5,8 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="FishingHub Dashboard" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Main Content -->
+        </Grid.ColumnDefinitions>
 
+        <!-- SIDEBAR -->
+        <StackPanel Background="#2C3E50" Grid.Column="0">
+            <TextBlock Text="🎣 FishingHub" FontSize="20" FontWeight="Bold"
+                       Foreground="White" Margin="10"/>
+            <Button Content="🏠 Tổng quan" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
+            <Button Content="📦 Hồ câu" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
+            <Button Content="🐟 Loài cá" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
+            <Button Content="📅 Sự kiện" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
+            <Button Content="🧑 Khách hàng" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
+        </StackPanel>
+
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <!-- Header -->
+                <RowDefinition Height="*"/>
+                <!-- Content -->
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <DockPanel Background="#ecf0f1" Grid.Row="0" LastChildFill="False" VerticalAlignment="Center">
+                <TextBlock Text="📊 Danh Sách Hồ Câu" FontSize="20" FontWeight="Bold" Margin="20,0"
+                           VerticalAlignment="Center"/>
+                <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,20,0">
+                    <TextBlock x:Name="WelcomeTextBlock" Text="Xin chào!" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
+                    <Ellipse Width="32" Height="32" Fill="Gray"/>
+                </StackPanel>
+
+            </DockPanel>
+
+            <!-- CONTENT AREA -->
+            <StackPanel Grid.Row="1" Margin="10">
+                <!-- CARD THỐNG KÊ -->
+                <UniformGrid Columns="3" Margin="0,0,0,20">
+                    <Border Background="#3498db" CornerRadius="10" Padding="10" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="Doanh thu" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock Text="8,930,000đ" Foreground="White" FontSize="18"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#2ecc71" CornerRadius="10" Padding="10" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="Khách hàng đang câu" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock Text="10 cần thủ" Foreground="White" FontSize="18"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#e74c3c" CornerRadius="10" Padding="10" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="chưa nghĩ ra" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock Text="" Foreground="White" FontSize="18"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+
+                <!-- DANH SÁCH HỒ CÂU -->
+                <ListView x:Name="LakeListView" Height="300">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Tên Hồ" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Địa Chỉ" Width="200" DisplayMemberBinding="{Binding Location}"/>
+                            <GridViewColumn Header="Loài Cá" Width="200" DisplayMemberBinding="{Binding FishSpeciesList}"/>
+                            <GridViewColumn Header="Sức Chứa" Width="100" DisplayMemberBinding="{Binding Capacity}"/>
+                            <GridViewColumn Header="Hành Động" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Đặt Hồ" Click="BookLake_Click" Tag="{Binding Id}" Padding="5"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button Content="➕ Thêm Hồ Câu" Width="150" Height="35" 
+                        HorizontalAlignment="Right" Margin="10"
+                        Click="AddLake_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
