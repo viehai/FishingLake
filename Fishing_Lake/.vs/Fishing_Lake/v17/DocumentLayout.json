@@ -3,32 +3,12 @@
   "WorkspaceRootPath": "E:\\Fishing_Lake\\Fishing_Lake\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4380407D-487C-47D5-A40D-85073EB33945}|FishingLake.DAL\\FishingLake.DAL.csproj|e:\\fishing_lake\\fishing_lake\\fishinglake.dal\\fishingmanagementcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4380407D-487C-47D5-A40D-85073EB33945}|FishingLake.DAL\\FishingLake.DAL.csproj|solutionrelative:fishinglake.dal\\fishingmanagementcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\detailwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\detailwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\fishing_lake.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\fishing_lake.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -37,6 +17,34 @@
     {
       "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\detailwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\detailwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\fishing_lake.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\fishing_lake.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4380407D-487C-47D5-A40D-85073EB33945}|FishingLake.DAL\\FishingLake.DAL.csproj|e:\\fishing_lake\\fishing_lake\\fishinglake.dal\\fishingmanagementcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4380407D-487C-47D5-A40D-85073EB33945}|FishingLake.DAL\\FishingLake.DAL.csproj|solutionrelative:fishinglake.dal\\fishingmanagementcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|e:\\fishing_lake\\fishing_lake\\fishing_lake\\detailwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2A06966A-6454-4E09-B80E-79E6DB2A37EB}|Fishing_Lake\\Fishing_Lake.csproj|solutionrelative:fishing_lake\\detailwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2848625-A716-4929-BB5B-53250CF11FB3}|FishingLake.BLL\\FishingLake.BLL.csproj|e:\\fishing_lake\\fishing_lake\\fishinglake.bll\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,24 +58,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DetailWindow.xaml.cs",
+              "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\DetailWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Fishing_Lake\\DetailWindow.xaml.cs",
+              "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\DetailWindow.xaml.cs",
+              "RelativeToolTip": "Fishing_Lake\\DetailWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T09:06:33.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Fishing_Lake\\LoginWindow.xaml.cs",
+              "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "Fishing_Lake\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAtwBcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T08:45:15.469Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "Fishing_Lake\\LoginWindow.xaml",
+              "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\LoginWindow.xaml",
+              "RelativeToolTip": "Fishing_Lake\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-01T08:44:08.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "FishingManagementContext.cs",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\FishingLake.DAL\\FishingManagementContext.cs",
               "RelativeDocumentMoniker": "FishingLake.DAL\\FishingManagementContext.cs",
               "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\FishingLake.DAL\\FishingManagementContext.cs",
               "RelativeToolTip": "FishingLake.DAL\\FishingManagementContext.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAA0wCUAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCUAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T02:12:35.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T02:12:35.505Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "App.xaml",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\App.xaml",
               "RelativeDocumentMoniker": "Fishing_Lake\\App.xaml",
@@ -79,40 +130,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "DetailWindow.xaml",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\DetailWindow.xaml",
               "RelativeDocumentMoniker": "Fishing_Lake\\DetailWindow.xaml",
               "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\DetailWindow.xaml",
               "RelativeToolTip": "Fishing_Lake\\DetailWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-27T01:59:23.862Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T01:59:23.862Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginWindow.xaml",
-              "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\LoginWindow.xaml",
-              "RelativeDocumentMoniker": "Fishing_Lake\\LoginWindow.xaml",
-              "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\LoginWindow.xaml",
-              "RelativeToolTip": "Fishing_Lake\\LoginWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-27T01:58:27.86Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Fishing_Lake",
+              "DocumentIndex": 8,
+              "Title": "Fishing_Lake.csproj",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake.csproj",
               "RelativeDocumentMoniker": "Fishing_Lake\\Fishing_Lake.csproj",
               "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake.csproj",
               "RelativeToolTip": "Fishing_Lake\\Fishing_Lake.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-27T01:54:04.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T01:54:04.47Z"
             },
             {
               "$type": "Document",
@@ -124,12 +161,11 @@
               "RelativeToolTip": "Fishing_Lake\\AssemblyInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T01:55:13.594Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T01:55:13.594Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\appsettings.json",
               "RelativeDocumentMoniker": "Fishing_Lake\\appsettings.json",
@@ -137,12 +173,11 @@
               "RelativeToolTip": "Fishing_Lake\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-27T01:54:42.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T01:54:42.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Class1.cs",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\FishingLake.BLL\\Class1.cs",
               "RelativeDocumentMoniker": "FishingLake.BLL\\Class1.cs",
@@ -150,24 +185,22 @@
               "RelativeToolTip": "FishingLake.BLL\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T01:46:33.102Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T01:46:33.102Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Fishing_Lake\\MainWindow.xaml",
               "ToolTip": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\MainWindow.xaml",
               "RelativeToolTip": "Fishing_Lake\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-27T01:45:22.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T01:45:22.84Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "E:\\Fishing_Lake\\Fishing_Lake\\Fishing_Lake\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Fishing_Lake\\MainWindow.xaml.cs",
@@ -175,8 +208,7 @@
               "RelativeToolTip": "Fishing_Lake\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T01:45:21.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T01:45:21.168Z"
             }
           ]
         }
