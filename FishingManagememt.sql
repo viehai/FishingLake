@@ -5,7 +5,9 @@ GO
 USE FishingManagement;
 GO
 
-DROP DATABASE FishingManagement
+USE master;
+ALTER DATABASE FishingManagement SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+DROP DATABASE FishingManagement;
 
 -- 1. USERS: khách và chủ hồ
 CREATE TABLE Users (
@@ -48,17 +50,16 @@ CREATE TABLE FishSpecies (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Description NVARCHAR(MAX),
-    AverageWeight FLOAT,
-    ImageUrl NVARCHAR(255)
+    AverageWeight FLOAT
 );
 select * from FishSpecies
 -- Chèn dữ liệu mẫu vào FishSpecies (nếu chưa có)
-INSERT INTO FishSpecies (Name, Description, AverageWeight, ImageUrl)
+INSERT INTO FishSpecies (Name, Description, AverageWeight)
 VALUES 
-    (N'Cá chép', N'Loài cá phổ biến', 2.5, N'https://example.com/cachép.jpg'),
-    (N'Cá rô', N'Cá nhỏ, dễ câu', 0.5, N'https://example.com/caro.jpg'),
-    (N'Cá trắm', N'Cá lớn, khỏe', 5.0, N'https://example.com/catrăm.jpg'),
-    (N'Cá lóc', N'Cá nước ngọt, ngon', 1.0, N'https://example.com/calóc.jpg');
+    (N'Cá chép', N'Loài cá phổ biến', 2.5),
+    (N'Cá rô', N'Cá nhỏ, dễ câu', 0.5),
+    (N'Cá trắm', N'Cá lớn, khỏe', 5.0),
+    (N'Cá lóc', N'Cá nước ngọt, ngon', 1.0);
 -- 4. PONDFISH: cá có trong từng hồ
 CREATE TABLE PondFish (
     Id INT IDENTITY(1,1) PRIMARY KEY,
@@ -94,3 +95,4 @@ CREATE TABLE Bookings (
 );
 
 select * from Bookings
+select * from Pond

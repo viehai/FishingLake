@@ -18,7 +18,7 @@ public partial class FishingManagementContext : DbContext
 
     public virtual DbSet<Booking> Bookings { get; set; }
 
-    public virtual DbSet<FishSpecy> FishSpecies { get; set; }
+    public virtual DbSet<FishSpecies> FishSpecies { get; set; }
 
     public virtual DbSet<Pond> Pond { get; set; }
 
@@ -61,11 +61,10 @@ public partial class FishingManagementContext : DbContext
                 .HasConstraintName("FK__Bookings__UserId__5AEE82B9");
         });
 
-        modelBuilder.Entity<FishSpecy>(entity =>
+        modelBuilder.Entity<FishSpecies>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__FishSpec__3214EC075E73698E");
 
-            entity.Property(e => e.ImageUrl).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(100);
         });
 

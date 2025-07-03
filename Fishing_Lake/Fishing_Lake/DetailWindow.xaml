@@ -46,7 +46,8 @@
                     <DataGrid x:Name="dgFishList" AutoGenerateColumns="False" Height="180" CanUserAddRows="True">
                         <DataGrid.Columns>
                             <DataGridComboBoxColumn Header="Loài cá" SelectedValueBinding="{Binding FishId}" 
-                                                    DisplayMemberPath="Name" SelectedValuePath="Id"/>
+                                                    DisplayMemberPath="Name" SelectedValuePath="Id"
+                            ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=fishSpecies}" />
                             <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
                         </DataGrid.Columns>
                     </DataGrid>

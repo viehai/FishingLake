@@ -102,7 +102,14 @@ namespace Fishing_Lake
 
         private void AddLake_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Chức năng thêm hồ câu đang được phát triển!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            var newPond = new Pond(); // tạo đối tượng hồ mới rỗng
+            var detailWindow = new DetailWindow(newPond);
+            
+
+            detailWindow.ShowDialog(); // mở cửa sổ nhập hồ mới
+
+            LoadPonds(); // sau khi đóng form => load lại danh sách hồ
         }
+
     }
 }

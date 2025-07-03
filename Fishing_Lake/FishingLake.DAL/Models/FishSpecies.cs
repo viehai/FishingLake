@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FishingLake.DAL.Models;
 
-public partial class FishSpecy
+public partial class FishSpecies
 {
     public int Id { get; set; }
 
@@ -12,8 +12,6 @@ public partial class FishSpecy
     public string? Description { get; set; }
 
     public double? AverageWeight { get; set; }
-
-    public string? ImageUrl { get; set; }
 
     public virtual ICollection<PondFish> PondFishes { get; set; } = new List<PondFish>();
 }
