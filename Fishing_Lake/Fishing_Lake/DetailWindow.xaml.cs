@@ -1,5 +1,4 @@
-﻿// DetailWindow.xaml.cs
-using FishingLake.DAL;
+﻿using FishingLake.DAL;
 using FishingLake.DAL.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +22,7 @@ namespace Fishing_Lake
             Loaded += Window_Loaded;
         }
 
-        public DetailWindow(Pond selectedPond) : this() // Xem chi tiết
+        public DetailWindow(Pond selectedPond) : this() // Xem chi tiết và chỉnh sửa
         {
             isEditMode = true;
             editingPond = selectedPond;
@@ -57,30 +56,65 @@ namespace Fishing_Lake
             dgFishList.ItemsSource = pondFishList;
         }
 
+        private bool ValidatePond()
+        {
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Tên hồ không được để trống.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                MessageBox.Show("Vị trí không được để trống.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if (!int.TryParse(txtCapacity.Text, out int capacity) || capacity <= 0)
+            {
+                MessageBox.Show("Dung lượng phải là số nguyên dương.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            return true;
+        }
+
         private void SavePond_Click(object sender, RoutedEventArgs e)
         {
+            if (!ValidatePond())
+                return;
+
             string name = txtName.Text.Trim();
             string location = txtLocation.Text.Trim();
             string description = txtDescription.Text.Trim();
-            int capacity;
+            int capacity = int.Parse(txtCapacity.Text);
+            int ownerId = 1; // TODO: Replace with actual owner selection logic if available
 
-            if (!int.TryParse(txtCapacity.Text, out capacity))
+            Pond pond;
+            if (isEditMode)
             {
-                MessageBox.Show("Dung lượng không hợp lệ.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                pond = editingPond;
+            }
+            else
+            {
+                pond = new Pond();
             }
 
-            int ownerId = 1; // Có thể đổi thành CurrentUser.Id nếu cần
+            pond.Name = name;
+            pond.Location = location;
+            pond.Description = description;
+            pond.Capacity = capacity;
+            pond.OwnerId = ownerId;
+            pond.PondFishes = pondFishList;
 
-            string? error = _pondService.AddPondWithFishes(name, location, description, capacity, ownerId, pondFishList);
-
-            if (error != null)
+            if (isEditMode)
             {
-                MessageBox.Show(error, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                _pondService.UpdatePond(pond);
+                MessageBox.Show("Cập nhật hồ thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                _pondService.AddPond(pond);
+                MessageBox.Show("Tạo hồ thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
-            MessageBox.Show("Tạo hồ thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
         }
 

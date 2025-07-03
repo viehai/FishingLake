@@ -14,9 +14,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Fishing_Lake
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public User? CurrentUser { get; set; }
@@ -34,7 +31,6 @@ namespace Fishing_Lake
                 WelcomeTextBlock.Text = $"Xin chào, {CurrentUser.Name} 👋";
             }
         }
-
 
         private void LoadPonds()
         {
@@ -79,14 +75,13 @@ namespace Fishing_Lake
 
                 int userId = CurrentUser.Id;
 
-                // Tạo booking mới
                 var booking = new Booking
                 {
                     PondId = pondId,
                     UserId = userId,
-                    BookingDate = DateOnly.FromDateTime(DateTime.Today), // Sử dụng DateOnly
+                    BookingDate = DateOnly.FromDateTime(DateTime.Today),
                     Status = "Pending",
-                    Price = 100000, // Giá mặc định, có thể lấy từ cấu hình hoặc bảng giá
+                    Price = 100000,
                     IsPaid = false,
                     PaymentMethod = "Cash"
                 };
@@ -97,19 +92,38 @@ namespace Fishing_Lake
                 MessageBox.Show($"Đã đặt hồ {pond.Name} thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
-            LoadPonds(); // Làm mới danh sách
+            LoadPonds();
         }
 
         private void AddLake_Click(object sender, RoutedEventArgs e)
         {
-            var newPond = new Pond(); // tạo đối tượng hồ mới rỗng
-            var detailWindow = new DetailWindow(newPond);
-            
-
-            detailWindow.ShowDialog(); // mở cửa sổ nhập hồ mới
-
-            LoadPonds(); // sau khi đóng form => load lại danh sách hồ
+            var detailWindow = new DetailWindow();
+            detailWindow.ShowDialog();
+            LoadPonds();
         }
 
+        private void EditLake_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int pondId = (int)button.Tag;
+
+            using (var context = new FishingManagementContext())
+            {
+                var pond = context.Pond
+                    .Include(p => p.PondFishes)
+                    .ThenInclude(pf => pf.Fish)
+                    .FirstOrDefault(p => p.Id == pondId);
+
+                if (pond == null)
+                {
+                    MessageBox.Show("Hồ không tồn tại!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                var detailWindow = new DetailWindow(pond);
+                detailWindow.ShowDialog();
+                LoadPonds();
+            }
+        }
     }
 }

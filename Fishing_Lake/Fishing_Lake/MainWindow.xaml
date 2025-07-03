@@ -43,7 +43,6 @@
                     <TextBlock x:Name="WelcomeTextBlock" Text="Xin chào!" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
                     <Ellipse Width="32" Height="32" Fill="Gray"/>
                 </StackPanel>
-
             </DockPanel>
 
             <!-- CONTENT AREA -->
@@ -78,10 +77,13 @@
                             <GridViewColumn Header="Địa Chỉ" Width="200" DisplayMemberBinding="{Binding Location}"/>
                             <GridViewColumn Header="Loài Cá" Width="200" DisplayMemberBinding="{Binding FishSpeciesList}"/>
                             <GridViewColumn Header="Sức Chứa" Width="100" DisplayMemberBinding="{Binding Capacity}"/>
-                            <GridViewColumn Header="Hành Động" Width="100">
+                            <GridViewColumn Header="Hành Động" Width="200">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Đặt Hồ" Click="BookLake_Click" Tag="{Binding Id}" Padding="5"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="Đặt Hồ" Click="BookLake_Click" Tag="{Binding Id}" Padding="5" Margin="0,0,5,0"/>
+                                            <Button Content="Sửa" Click="EditLake_Click" Tag="{Binding Id}" Padding="5"/>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
