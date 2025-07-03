@@ -114,16 +114,40 @@ namespace Fishing_Lake
                     .ThenInclude(pf => pf.Fish)
                     .FirstOrDefault(p => p.Id == pondId);
 
+                var detailWindow = new DetailWindow(pond);
+                detailWindow.ShowDialog();
+                LoadPonds();
+            }
+        }
+
+        private void DeleteLake_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int pondId = (int)button.Tag;
+
+            var result = MessageBox.Show("Bạn có chắc chắn muốn xoá hồ này không?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            using (var context = new FishingManagementContext())
+            {
+                var pond = context.Pond
+                    .Include(p => p.PondFishes)
+                    .FirstOrDefault(p => p.Id == pondId);
+
                 if (pond == null)
                 {
                     MessageBox.Show("Hồ không tồn tại!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                var detailWindow = new DetailWindow(pond);
-                detailWindow.ShowDialog();
-                LoadPonds();
+                var pondService = new PondService();
+                pondService.DeletePond(pond);
             }
+
+            MessageBox.Show("Đã xoá hồ thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            LoadPonds(); // Reload danh sách
         }
+
     }
 }

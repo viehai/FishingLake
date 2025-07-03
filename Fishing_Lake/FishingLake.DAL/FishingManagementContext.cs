@@ -97,9 +97,10 @@ public partial class FishingManagementContext : DbContext
 
             entity.HasOne(d => d.Pond).WithMany(p => p.PondFishes)
                 .HasForeignKey(d => d.PondId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade) // ĐÂY
                 .HasConstraintName("FK__PondFish__PondId__5535A963");
         });
+
 
         modelBuilder.Entity<User>(entity =>
         {

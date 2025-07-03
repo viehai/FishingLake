@@ -5023,11 +5023,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Fishing_Lake\\Fishing_Lake\\FishingLake.DAL\\FishingLake.DAL.csproj",
+      "projectUniqueName": "E:\\FishingLake\\Fishing_Lake\\FishingLake.DAL\\FishingLake.DAL.csproj",
       "projectName": "FishingLake.DAL",
-      "projectPath": "E:\\Fishing_Lake\\Fishing_Lake\\FishingLake.DAL\\FishingLake.DAL.csproj",
+      "projectPath": "E:\\FishingLake\\Fishing_Lake\\FishingLake.DAL\\FishingLake.DAL.csproj",
       "packagesPath": "C:\\Users\\Viehai\\.nuget\\packages\\",
-      "outputPath": "E:\\Fishing_Lake\\Fishing_Lake\\FishingLake.DAL\\obj\\",
+      "outputPath": "E:\\FishingLake\\Fishing_Lake\\FishingLake.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
