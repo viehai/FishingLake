@@ -15,11 +15,11 @@ public partial class Booking
 
     public string? Note { get; set; }
 
-    public string? Status { get; set; }
+    
 
     public decimal? Price { get; set; }
 
-    public bool? IsPaid { get; set; }
+    
 
     public DateTime? PaymentTime { get; set; }
 

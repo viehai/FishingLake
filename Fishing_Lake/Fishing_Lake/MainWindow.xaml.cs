@@ -55,45 +55,27 @@ namespace Fishing_Lake
 
         private void BookLake_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            int pondId = (int)button.Tag;
-
-            using (var context = new FishingManagementContext())
+            if (sender is not Button button || button.Tag is not int pondId)
             {
-                var pond = context.Pond.Find(pondId);
-                if (pond == null)
-                {
-                    MessageBox.Show("Hồ không tồn tại!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-
-                if (CurrentUser == null)
-                {
-                    MessageBox.Show("Không xác định được người dùng!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-
-                int userId = CurrentUser.Id;
-
-                var booking = new Booking
-                {
-                    PondId = pondId,
-                    UserId = userId,
-                    BookingDate = DateOnly.FromDateTime(DateTime.Today),
-                    Status = "Pending",
-                    Price = 100000,
-                    IsPaid = false,
-                    PaymentMethod = "Cash"
-                };
-
-                context.Bookings.Add(booking);
-                context.SaveChanges();
-
-                MessageBox.Show($"Đã đặt hồ {pond.Name} thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Không xác định được hồ.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+
+            using var context = new FishingManagementContext();
+            var pond = context.Pond.Find(pondId);
+            if (pond == null)
+            {
+                MessageBox.Show("Hồ không tồn tại.");
+                return;
+            }
+
+            var bookingWindow = new BookingWindow(pond); // Không cần truyền CurrentUser nữa
+            bookingWindow.ShowDialog();
 
             LoadPonds();
         }
+
+
 
         private void AddLake_Click(object sender, RoutedEventArgs e)
         {

@@ -38,7 +38,7 @@ public partial class FishingManagementContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK__Bookings__3214EC070A6EFDE6");
 
             
-            entity.Property(e => e.IsPaid).HasDefaultValue(false);
+            
             entity.Property(e => e.PaymentMethod)
                 .HasMaxLength(50)
                 .HasDefaultValue("Cash");
@@ -46,9 +46,7 @@ public partial class FishingManagementContext : DbContext
             entity.Property(e => e.Price)
                 .HasDefaultValue(0m)
                 .HasColumnType("money");
-            entity.Property(e => e.Status)
-                .HasMaxLength(20)
-                .HasDefaultValue("Pending");
+            
 
             entity.HasOne(d => d.Pond).WithMany(p => p.Bookings)
                 .HasForeignKey(d => d.PondId)

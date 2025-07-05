@@ -164,3 +164,5 @@ E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\refint\Fishing
 E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake.pdb
 E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake.genruntimeconfig.cache
 E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\ref\Fishing_Lake.dll
+E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\BookingWindow.g.cs
+E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\BookingWindow.baml

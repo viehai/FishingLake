@@ -87,9 +87,9 @@ CREATE TABLE Bookings (
     UserId INT NOT NULL FOREIGN KEY REFERENCES Users(Id),
     BookingDate DATE NOT NULL,               -- ngày câu
     Note NVARCHAR(MAX),
-    Status NVARCHAR(20) DEFAULT 'Pending',   -- Pending, Confirmed, Done, Cancelled, Expired
+    
     Price MONEY DEFAULT 0,                   -- giá tiền
-    IsPaid BIT DEFAULT 0,                    -- đã thanh toán chưa
+    
     PaymentTime DATETIME NULL,               -- thời gian thanh toán
     PaymentMethod NVARCHAR(50) DEFAULT 'Cash'-- mặc định là tiền mặt
 );
