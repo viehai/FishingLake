@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fishing_Lake")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+241fe38426347ae7fb8e44264f0e1770be7f59f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e072c391e87cb44b2f5f4d03420ae88bb11d019d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fishing_Lake")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fishing_Lake")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -131,5 +131,16 @@ namespace Fishing_Lake
             LoadPonds(); // Reload danh sách
         }
 
+        private void OpenCustomerManagement_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new CustomerManagementWindow();
+            window.ShowDialog(); // hoặc .Show() nếu không cần modal
+        }
+
+        private void HistoryBookingButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new BookingHistoryWindow();
+            window.ShowDialog();
+        }
     }
 }

@@ -22,8 +22,8 @@
             <Button Content="🏠 Tổng quan" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
             <Button Content="📦 Hồ câu" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
             <Button Content="🐟 Loài cá" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
-            <Button Content="📅 Sự kiện" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
-            <Button Content="🧑 Khách hàng" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
+            <Button Content="🕘 Lịch sử đặt hồ" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0" Click="HistoryBookingButton_Click"/>
+            <Button Content="🧑 Khách hàng" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0" Click="OpenCustomerManagement_Click"/>
         </StackPanel>
 
         <!-- MAIN CONTENT -->

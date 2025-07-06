@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 E:\FishingLake\Fishing_Lake\Fishing_Lake\App.xaml
-51712236677
+72143212193
 
-8-595288679
+10-1915846780
 236296591159
-BookingWindow.xaml;DetailWindow.xaml;LoginWindow.xaml;MainWindow.xaml;RegisterWindow.xaml;
+BookingHistoryWindow.xaml;BookingWindow.xaml;CustomerManagementWindow.xaml;DetailWindow.xaml;LoginWindow.xaml;MainWindow.xaml;RegisterWindow.xaml;
 
 False
 

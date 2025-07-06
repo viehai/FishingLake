@@ -47,12 +47,22 @@ namespace FishingLake.Services
             if (pond == null)
                 return "Không tìm thấy hồ.";
 
+            // Tính giá + hiển thị thông báo nếu VIP
+            decimal originalPrice = 100_000m;
+            decimal finalPrice = originalPrice;
+            string discountMsg = "";
+
+            if (user.IsVip == true)
+            {
+                finalPrice = originalPrice * 0.8m;
+                discountMsg = $"Khách là VIP, được giảm 20%. Giá từ {originalPrice:N0}đ còn {finalPrice:N0}đ.";
+            }
             var booking = new Booking
             {
                 PondId = pondId,
                 UserId = user.Id,
                 BookingDate = DateOnly.FromDateTime(bookingDate),
-                Price = price,
+                Price = finalPrice,
                 PaymentMethod = "Cash",
                 PaymentTime = paymentTime,
                 Note = string.IsNullOrWhiteSpace(note)
@@ -70,7 +80,18 @@ namespace FishingLake.Services
             context.Bookings.Add(booking);
             context.SaveChanges();
 
-            return $"✅ Đã đặt hồ thành công cho khách {user.Name}!\nHết hạn lúc 24h ngày {bookingDate:dd/MM/yyyy}.";
+            string result = $"✅ Đã đặt hồ thành công cho khách {user.Name}!";
+
+            if (user.IsVip == true)
+            {
+                // Nếu là VIP, thêm dòng thông báo giảm giá
+                result +=
+                    $"\nKhách là VIP, được giảm 20%. Giá từ {originalPrice:N0}đ còn {finalPrice:N0}đ.";
+            }
+
+            result += $"\nHết hạn lúc 24h ngày {bookingDate:dd/MM/yyyy}.";
+
+            return result;
         }
     }
 }
