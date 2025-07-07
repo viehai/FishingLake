@@ -66,6 +66,19 @@ VALUES
     (N'Cá rô', N'Cá nhỏ, dễ câu', 0.5),
     (N'Cá trắm', N'Cá lớn, khỏe', 5.0),
     (N'Cá lóc', N'Cá nước ngọt, ngon', 1.0);
+
+INSERT INTO FishSpecies (Name, Description, AverageWeight)
+VALUES 
+    (N'Cá tra', N'Cá da trơn, dễ nuôi và tăng trưởng nhanh', 4.0),
+    (N'Cá mè', N'Cá ăn lọc, thường sống theo bầy', 3.5),
+    (N'Cá chim trắng', N'Cá thân dẹp, thường nhảy mạnh khi mắc câu', 1.8),
+    (N'Cá chạch', N'Cá nhỏ, thường ẩn dưới bùn', 0.3),
+    (N'Cá vược', N'Cá săn mồi, phản ứng nhanh', 2.0),
+    (N'Cá trê', N'Cá da trơn, sống dai, thường câu ban đêm', 1.5),
+    (N'Cá trôi', N'Cá hiền, ăn tạp, dễ câu bằng mồi bột', 2.2),
+    (N'Cá rô phi', N'Cá phổ biến, sinh sản mạnh, dễ nuôi', 1.2),
+    (N'Cá ngạnh', N'Cá da trơn, có ngạnh sắc nhọn', 1.7),
+    (N'Cá lăng', N'Cá to, chuyên sống nơi nước chảy', 6.0);
 -- 4. PONDFISH: cá có trong từng hồ
 CREATE TABLE PondFish (
     Id INT IDENTITY(1,1) PRIMARY KEY,
