@@ -12,20 +12,12 @@ namespace FishingLake.BLL.Services
             _repo = new HistoryRepository();
         }
 
-        public List<Booking> GetBookings(string keyword = "")
+        public List<Booking> GetBookings(string keyword, int ownerId)
         {
-            var bookings = string.IsNullOrWhiteSpace(keyword)
-                ? _repo.GetAll()
-                : _repo.Search(keyword);
+            if (string.IsNullOrWhiteSpace(keyword))
+                return _repo.GetByOwner(ownerId);
 
-            return bookings
-                .OrderByDescending(b => b.BookingDate)
-                .ToList();
-        }
-
-        public List<Booking> GetByUserId(int userId)
-        {
-            return _repo.GetByUserId(userId);
+            return _repo.SearchByKeywordAndOwner(keyword, ownerId);
         }
     }
 }

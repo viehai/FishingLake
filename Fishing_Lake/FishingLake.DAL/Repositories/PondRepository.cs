@@ -38,4 +38,21 @@ public class PondRepository
         _context.Pond.Remove(pond);
         _context.SaveChanges();
     }
+
+    public List<Pond> GetByOwnerId(int ownerId, bool includeHidden = false)
+    {
+        _context = new FishingManagementContext();
+        var query = _context.Pond
+            .Include(p => p.Owner)
+            .Include(p => p.PondFishes)
+            .ThenInclude(pf => pf.Fish)
+            .Where(p => p.OwnerId == ownerId);
+
+        if (!includeHidden)
+            query = query.Where(p => !p.IsDeleted);
+
+        return query.ToList();
+    }
+
+
 }

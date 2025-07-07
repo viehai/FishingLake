@@ -43,6 +43,7 @@ namespace Fishing_Lake
             MainWindow mainWindow = new MainWindow();
             mainWindow.CurrentUser = user; // Gán user nếu cần truyền thông tin
             mainWindow.Show();
+
             this.Close();
         }
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FishingLake.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e072c391e87cb44b2f5f4d03420ae88bb11d019d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e88c335f91e121a49d49e7ca83cf879140504609")]
 [assembly: System.Reflection.AssemblyProductAttribute("FishingLake.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FishingLake.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

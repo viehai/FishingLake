@@ -11,6 +11,8 @@ using System.Windows.Shapes;
 using FishingLake.DAL.Models;
 using FishingLake.DAL;
 using Microsoft.EntityFrameworkCore;
+using FishingLake.Services;
+
 
 namespace Fishing_Lake
 {
@@ -21,37 +23,44 @@ namespace Fishing_Lake
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
-            LoadPonds();
-        }
+}
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             if (CurrentUser != null)
             {
-                WelcomeTextBlock.Text = $"Xin chào, {CurrentUser.Name} 👋";
+                WelcomeTextBlock.Text = $"Xin chào, {CurrentUser.Name} 👋"; 
+                LoadPonds();
+                LoadDashboardStats();
             }
         }
+
+        private PondService _pondService = new PondService();
 
         private void LoadPonds()
         {
-            using (var context = new FishingManagementContext())
-            {
-                var ponds = context.Pond
-                    .Include(p => p.PondFishes)
-                    .ThenInclude(pf => pf.Fish)
-                    .ToList()
-                    .Select(p => new
-                    {
-                        p.Id,
-                        p.Name,
-                        p.Location,
-                        p.Capacity,
-                        FishSpeciesList = string.Join(", ", p.PondFishes.Select(pf => $"{pf.Fish.Name} ({pf.Quantity})"))
-                    }).ToList();
+            using var context = new FishingManagementContext();
+            var ponds = context.Pond
+                .Where(p => p.OwnerId == CurrentUser.Id)
+                .Include(p => p.PondFishes)
+                .ThenInclude(pf => pf.Fish)
+                .ToList()
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.Location,
+                    p.Capacity,
+                    p.IsDeleted, // Quan trọng!
+                    FishSpeciesList = string.Join(", ", p.PondFishes.Select(pf => pf.Fish.Name))
+                });
 
-                LakeListView.ItemsSource = ponds;
-            }
+            LakeListView.ItemsSource = ponds;
         }
+
+
+
+
 
         private void BookLake_Click(object sender, RoutedEventArgs e)
         {
@@ -73,13 +82,14 @@ namespace Fishing_Lake
             bookingWindow.ShowDialog();
 
             LoadPonds();
+            LoadDashboardStats();
         }
 
 
 
         private void AddLake_Click(object sender, RoutedEventArgs e)
         {
-            var detailWindow = new DetailWindow();
+            var detailWindow = new DetailWindow(CurrentUser);
             detailWindow.ShowDialog();
             LoadPonds();
         }
@@ -94,53 +104,83 @@ namespace Fishing_Lake
                 var pond = context.Pond
                     .Include(p => p.PondFishes)
                     .ThenInclude(pf => pf.Fish)
-                    .FirstOrDefault(p => p.Id == pondId);
+                    .FirstOrDefault(p => p.Id == pondId && p.OwnerId == CurrentUser.Id);
 
-                var detailWindow = new DetailWindow(pond);
+                var detailWindow = new DetailWindow(pond, CurrentUser);
                 detailWindow.ShowDialog();
                 LoadPonds();
             }
         }
 
-        private void DeleteLake_Click(object sender, RoutedEventArgs e)
+        private void HideLake_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            int pondId = (int)button.Tag;
-
-            var result = MessageBox.Show("Bạn có chắc chắn muốn xoá hồ này không?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result != MessageBoxResult.Yes)
-                return;
-
-            using (var context = new FishingManagementContext())
+            if (sender is Button btn && int.TryParse(btn.Tag.ToString(), out int pondId))
             {
-                var pond = context.Pond
-                    .Include(p => p.PondFishes)
-                    .FirstOrDefault(p => p.Id == pondId);
-
-                if (pond == null)
+                var context = new FishingManagementContext();
+                var pond = context.Pond.FirstOrDefault(p => p.Id == pondId);
+                if (pond != null)
                 {
-                    MessageBox.Show("Hồ không tồn tại!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    pond.IsDeleted = true;
+                    context.SaveChanges();
+                    MessageBox.Show($"✅ Hồ '{pond.Name}' đã được ẩn!");
+                    LoadPonds(); // Reload danh sách hồ
                 }
-
-                var pondService = new PondService();
-                pondService.DeletePond(pond);
             }
-
-            MessageBox.Show("Đã xoá hồ thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-            LoadPonds(); // Reload danh sách
         }
+
+        private void RestoreLake_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && int.TryParse(btn.Tag.ToString(), out int pondId))
+            {
+                var context = new FishingManagementContext();
+                var pond = context.Pond.FirstOrDefault(p => p.Id == pondId);
+                if (pond != null)
+                {
+                    pond.IsDeleted = false;
+                    context.SaveChanges();
+                    MessageBox.Show($"✅ Hồ '{pond.Name}' đã được hiện lại!");
+                    LoadPonds(); // Reload danh sách hồ
+                }
+            }
+        }
+
+
+
+
+
 
         private void OpenCustomerManagement_Click(object sender, RoutedEventArgs e)
         {
-            var window = new CustomerManagementWindow();
-            window.ShowDialog(); // hoặc .Show() nếu không cần modal
+            var window = new CustomerManagementWindow(CurrentUser);
+            window.ShowDialog();
         }
 
         private void HistoryBookingButton_Click(object sender, RoutedEventArgs e)
         {
-            var window = new BookingHistoryWindow();
+            var window = new BookingHistoryWindow(CurrentUser);
             window.ShowDialog();
         }
+
+
+        private readonly BookingService _bookingService = new BookingService();
+
+        private void LoadDashboardStats()
+        {
+            if (CurrentUser == null) return;
+
+            int ownerId = CurrentUser.Id;
+
+            decimal revenue = _bookingService.GetTodayRevenue(ownerId);
+            RevenueTextBlock.Text = $"{revenue:N0}đ";
+
+            int activeCustomers = _bookingService.GetActiveCustomerCountToday(ownerId);
+            ActiveCustomerTextBlock.Text = $"{activeCustomers} cần thủ";
+
+            int totalBookingCount = _bookingService.GetTotalBookingsToday(ownerId);
+            TotalBookingTextBlock.Text = $"{totalBookingCount} lượt đặt hồ";
+        }
+
+
+
     }
 }

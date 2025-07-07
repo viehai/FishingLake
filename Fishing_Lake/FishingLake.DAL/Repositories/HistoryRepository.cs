@@ -1,7 +1,5 @@
 ﻿using FishingLake.DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace FishingLake.DAL.Repositories
 {
@@ -11,30 +9,30 @@ namespace FishingLake.DAL.Repositories
         {
             using var context = new FishingManagementContext();
             return context.Bookings
+                .Where(b => b.Pond != null && b.User != null)
                 .Include(b => b.User)
                 .Include(b => b.Pond)
-                .Where(b => b.User.Role == 2)
                 .ToList();
         }
 
-        public List<Booking> Search(string keyword)
+        public List<Booking> GetByOwner(int ownerId)
         {
             using var context = new FishingManagementContext();
             return context.Bookings
                 .Include(b => b.User)
                 .Include(b => b.Pond)
-                .Where(b => b.User.Role == 2 &&
-                           (b.User.Name.Contains(keyword) || b.User.Phone.Contains(keyword)))
+                .Where(b => b.Pond.OwnerId == ownerId)
                 .ToList();
         }
 
-        public List<Booking> GetByUserId(int userId)
+        public List<Booking> SearchByKeywordAndOwner(string keyword, int ownerId)
         {
             using var context = new FishingManagementContext();
             return context.Bookings
                 .Include(b => b.User)
                 .Include(b => b.Pond)
-                .Where(b => b.UserId == userId)
+                .Where(b => b.Pond.OwnerId == ownerId &&
+                            (b.User.Name.Contains(keyword) || b.User.Phone.Contains(keyword)))
                 .ToList();
         }
     }

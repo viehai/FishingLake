@@ -9,6 +9,12 @@ public class PondService
     {
         return _repo.GetAll();
     }
+    public List<Pond> GetPondsByOwner(int ownerId, bool includeHidden = false)
+    {
+        return _repo.GetByOwnerId(ownerId, includeHidden);
+    }
+
+
 
     public void AddPond(Pond pond)
     {

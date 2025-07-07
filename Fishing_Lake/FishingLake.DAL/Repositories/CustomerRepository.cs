@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FishingLake.DAL.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace FishingLake.DAL.Repositories
 {
@@ -14,6 +16,20 @@ namespace FishingLake.DAL.Repositories
             using var context = new FishingManagementContext();
             return context.Users.Where(u => u.Role == 2).ToList();
         }
+
+        public List<Booking> GetBookingsByOwner(int ownerId)
+        {
+            using var context = new FishingManagementContext();
+
+            return context.Bookings
+                .Include(b => b.User)
+                .Include(b => b.Pond)
+                .Where(b => b.Pond.OwnerId == ownerId)
+                .ToList();
+        }
+
+
+
 
         public List<User> Search(string keyword)
         {

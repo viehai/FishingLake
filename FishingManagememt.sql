@@ -20,7 +20,6 @@ CREATE TABLE Users (
     IsVIP BIT DEFAULT 0
 );
 
-select * from Users
 
 INSERT INTO Users (Name, Phone, PasswordHash, Role)
 VALUES (N'Chủ Hồ Long', '0965120204', '123', 1);
@@ -34,6 +33,8 @@ CREATE TABLE Pond (
     Capacity INT NOT NULL DEFAULT 20,      -- số chỗ tối đa mỗi slot
     OwnerId INT NOT NULL FOREIGN KEY REFERENCES Users(Id)
 );
+ALTER TABLE Pond ADD IsDeleted BIT NOT NULL DEFAULT 0;
+
 
 select * from Pond
 
@@ -44,6 +45,11 @@ VALUES
     (N'Hồ Câu B', N'456 Bạch Đằng, Đà Nẵng', N'Hồ câu rộng, thích hợp câu đêm', 25, 1),
     (N'Hồ Câu C', N'789 Lê Lợi, Huế', N'Hồ câu yên tĩnh, nhiều cá lóc', 15, 1);
 
+INSERT INTO Pond (Name, Location, Description, Capacity, OwnerId)
+VALUES 
+    (N'Hồ Câu Z', N'10 Trần Phú, TP.HCM', N'Hồ rộng, có cá tra và cá trắm', 30, 9),
+    (N'Hồ Câu X', N'55 Nguyễn Huệ, Cần Thơ', N'Không gian thoáng đãng, phù hợp nhóm bạn', 18, 9),
+    (N'Hồ Câu C', N'99 Phan Đình Phùng, Đà Lạt', N'Nước mát, nhiều cá hồi', 22, 9);
 
 -- 3. FISHSPECIES: loài cá
 CREATE TABLE FishSpecies (
@@ -95,4 +101,11 @@ CREATE TABLE Bookings (
 );
 
 select * from Bookings
+
+select * from Users
 select * from Pond
+
+SELECT * FROM Bookings WHERE BookingDate = CAST(GETDATE() AS DATE)
+
+SELECT Id, Name, OwnerId FROM Pond;
+SELECT * FROM Pond WHERE OwnerId = 1

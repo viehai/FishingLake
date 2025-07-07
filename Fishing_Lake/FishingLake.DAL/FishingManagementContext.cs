@@ -73,6 +73,7 @@ public partial class FishingManagementContext : DbContext
             entity.Property(e => e.Capacity).HasDefaultValue(20);
             entity.Property(e => e.Location).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.IsDeleted).HasDefaultValue(false);
 
             entity.HasOne(d => d.Owner).WithMany(p => p.Ponds)
                 .HasForeignKey(d => d.OwnerId)

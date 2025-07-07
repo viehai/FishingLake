@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
-        Title="BookingWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen"
+        Title="BookingWindow" Height="450" Width="800" 
         ResizeMode="NoResize"
-        Background="#f0f2f5">
+        WindowStartupLocation="CenterScreen" Background="#e0f7fa">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

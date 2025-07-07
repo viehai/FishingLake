@@ -17,6 +17,8 @@ public partial class Pond
 
     public int OwnerId { get; set; }
 
+    public bool IsDeleted { get; set; } = false;
+
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     public virtual User Owner { get; set; } = null!;

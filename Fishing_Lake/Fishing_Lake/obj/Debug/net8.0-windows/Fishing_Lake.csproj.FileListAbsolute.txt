@@ -170,3 +170,5 @@ E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\Fishing_Lake.g
 E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\ref\Fishing_Lake.dll
 E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\BookingHistoryWindow.g.cs
 E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\BookingHistoryWindow.baml
+E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+E:\FishingLake\Fishing_Lake\Fishing_Lake\obj\Debug\net8.0-windows\App.baml

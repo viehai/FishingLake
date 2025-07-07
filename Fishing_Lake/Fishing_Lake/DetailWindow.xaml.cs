@@ -9,6 +9,7 @@ namespace Fishing_Lake
 {
     public partial class DetailWindow : Window
     {
+        private User _currentUser;
         private List<PondFish> pondFishList = new();
         private List<FishSpecies> fishSpecies = new();
 
@@ -16,13 +17,14 @@ namespace Fishing_Lake
         private bool isEditMode = false;
         private Pond? editingPond;
 
-        public DetailWindow() // Tạo mới
+        public DetailWindow(User currentUser) // Tạo mới
         {
             InitializeComponent();
             Loaded += Window_Loaded;
+            _currentUser = currentUser;
         }
 
-        public DetailWindow(Pond selectedPond) : this() // Xem chi tiết và chỉnh sửa
+        public DetailWindow(Pond selectedPond, User currentUser) : this(currentUser)
         {
             isEditMode = true;
             editingPond = selectedPond;
@@ -85,7 +87,6 @@ namespace Fishing_Lake
             string location = txtLocation.Text.Trim();
             string description = txtDescription.Text.Trim();
             int capacity = int.Parse(txtCapacity.Text);
-            int ownerId = 1; // TODO: Replace with actual owner selection logic if available
 
             Pond pond;
             if (isEditMode)
@@ -95,13 +96,13 @@ namespace Fishing_Lake
             else
             {
                 pond = new Pond();
+                pond.OwnerId = _currentUser.Id; // Gán đúng OwnerId khi tạo mới
             }
 
             pond.Name = name;
             pond.Location = location;
             pond.Description = description;
             pond.Capacity = capacity;
-            pond.OwnerId = ownerId;
             pond.PondFishes = pondFishList;
 
             if (isEditMode)
@@ -117,6 +118,7 @@ namespace Fishing_Lake
 
             this.Close();
         }
+
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {

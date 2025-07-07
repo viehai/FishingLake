@@ -19,11 +19,7 @@ namespace FishingLake.DAL.Repositories
             _context.SaveChanges();
         }
 
-        public void UpdateUser(User user)
-        {
-            _context.Users.Update(user);
-            _context.SaveChanges();
-        }
+        
 
         public Pond? GetPondById(int id)
         {
@@ -35,5 +31,24 @@ namespace FishingLake.DAL.Repositories
             _context.Bookings.Add(booking);
             _context.SaveChanges();
         }
+
+        public List<Booking> GetTodayBookings()
+        {
+            using var context = new FishingManagementContext();
+            var today = DateOnly.FromDateTime(DateTime.Today);
+            return context.Bookings
+                          .Where(b => b.BookingDate == today)
+                          .ToList();
+        }
+
+        public decimal GetTodayRevenue()
+        {
+            using var context = new FishingManagementContext();
+            var today = DateOnly.FromDateTime(DateTime.Today);
+            return context.Bookings
+                          .Where(b => b.BookingDate == today && b.PaymentTime != null)
+                          .Sum(b => (decimal?)b.Price) ?? 0;
+        }
     }
 }
+

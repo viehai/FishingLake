@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
-        Title="FishingHub Dashboard" Height="600" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        Title="FishingHub Dashboard" Height="600" Width="1200"
+        WindowStartupLocation="CenterScreen" Background="#e0f7fa">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -51,20 +52,21 @@
                 <UniformGrid Columns="3" Margin="0,0,0,20">
                     <Border Background="#3498db" CornerRadius="10" Padding="10" Margin="5">
                         <StackPanel>
-                            <TextBlock Text="Doanh thu" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock Text="8,930,000đ" Foreground="White" FontSize="18"/>
+                            <TextBlock Text="Doanh thu ngày hôm nay" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock x:Name="RevenueTextBlock" Text="0 VND" Foreground="White" FontSize="18"/>
                         </StackPanel>
                     </Border>
                     <Border Background="#2ecc71" CornerRadius="10" Padding="10" Margin="5">
                         <StackPanel>
                             <TextBlock Text="Khách hàng đang câu" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock Text="10 cần thủ" Foreground="White" FontSize="18"/>
+                            <TextBlock x:Name="ActiveCustomerTextBlock" Text="0 cần thủ" Foreground="White" FontSize="18"/>
+
                         </StackPanel>
                     </Border>
                     <Border Background="#e74c3c" CornerRadius="10" Padding="10" Margin="5">
                         <StackPanel>
-                            <TextBlock Text="chưa nghĩ ra" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock Text="" Foreground="White" FontSize="18"/>
+                            <TextBlock Text="Tổng số người booking trong hôm nay" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock x:Name="TotalBookingTextBlock" Text="0 lượt booking" Foreground="White" FontSize="18"/>
                         </StackPanel>
                     </Border>
                 </UniformGrid>
@@ -77,13 +79,67 @@
                             <GridViewColumn Header="Địa Chỉ" Width="200" DisplayMemberBinding="{Binding Location}"/>
                             <GridViewColumn Header="Loài Cá" Width="200" DisplayMemberBinding="{Binding FishSpeciesList}"/>
                             <GridViewColumn Header="Sức Chứa" Width="100" DisplayMemberBinding="{Binding Capacity}"/>
-                            <GridViewColumn Header="Hành Động" Width="200">
+                            <GridViewColumn Header="Hành Động" Width="250">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button Content="Đặt Hồ" Click="BookLake_Click" Tag="{Binding Id}" Padding="5" Margin="0,0,5,0"/>
-                                            <Button Content="Sửa" Click="EditLake_Click" Tag="{Binding Id}" Padding="5" Margin="0,0,5,0"/>
-                                            <Button Content="Xoá" Click="DeleteLake_Click" Tag="{Binding Id}" Padding="5" Background="#e74c3c" Foreground="White"/>
+                                        <StackPanel Orientation="Horizontal"
+                        Opacity="{Binding IsDeleted, Converter={StaticResource BoolToOpacityConverter}}">
+
+                                            <!-- Nút Đặt Hồ -->
+                                            <Button Content="Đặt Hồ"
+                        Click="BookLake_Click"
+                        Tag="{Binding Id}"
+                        Padding="5"
+                        Margin="0,0,5,0"
+                        IsEnabled="{Binding IsDeleted, Converter={StaticResource InverseBoolConverter}}"/>
+
+                                            <!-- Nút Sửa -->
+                                            <Button Content="Sửa"
+                        Click="EditLake_Click"
+                        Tag="{Binding Id}"
+                        Padding="5"
+                        Margin="0,0,5,0"
+                        IsEnabled="{Binding IsDeleted, Converter={StaticResource InverseBoolConverter}}"/>
+
+                                            <!-- Nút Ẩn -->
+                                            <Button Content="Ẩn"
+                        Click="HideLake_Click"
+                        Tag="{Binding Id}"
+                        Padding="5"
+                        Background="#e67e22"
+                        Foreground="White"
+                        Margin="0,0,5,0">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsDeleted}" Value="True">
+                                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+
+                                            <!-- Nút Hiện Lại -->
+                                            <Button Content="Hiện Lại"
+                        Click="RestoreLake_Click"
+                        Tag="{Binding Id}"
+                        Padding="5"
+                        Background="Green"
+                        Foreground="White">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsDeleted}" Value="True">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

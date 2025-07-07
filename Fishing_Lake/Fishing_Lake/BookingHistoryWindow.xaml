@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
                 Title="Lịch Sử Đặt Hồ" Height="500" Width="850"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Background="#e0f7fa">
     <StackPanel Margin="10">
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,10">
             <TextBlock Text="🔍 Tìm kiếm: " VerticalAlignment="Center"/>
