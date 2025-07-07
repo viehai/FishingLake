@@ -13,23 +13,23 @@ using FishingLake.DAL;
 using Microsoft.EntityFrameworkCore;
 using FishingLake.Services;
 
-
 namespace Fishing_Lake
 {
     public partial class MainWindow : Window
     {
         public User? CurrentUser { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
-}
+        }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             if (CurrentUser != null)
             {
-                WelcomeTextBlock.Text = $"Xin chào, {CurrentUser.Name} 👋"; 
+                WelcomeTextBlock.Text = $"Welcome, {CurrentUser.Name} 👋";
                 LoadPonds();
                 LoadDashboardStats();
             }
@@ -51,22 +51,18 @@ namespace Fishing_Lake
                     p.Name,
                     p.Location,
                     p.Capacity,
-                    p.IsDeleted, // Quan trọng!
+                    p.IsDeleted,
                     FishSpeciesList = string.Join(", ", p.PondFishes.Select(pf => pf.Fish.Name))
                 });
 
             LakeListView.ItemsSource = ponds;
         }
 
-
-
-
-
         private void BookLake_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not Button button || button.Tag is not int pondId)
             {
-                MessageBox.Show("Không xác định được hồ.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unable to identify pond.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -74,18 +70,16 @@ namespace Fishing_Lake
             var pond = context.Pond.Find(pondId);
             if (pond == null)
             {
-                MessageBox.Show("Hồ không tồn tại.");
+                MessageBox.Show("Pond does not exist.");
                 return;
             }
 
-            var bookingWindow = new BookingWindow(pond); // Không cần truyền CurrentUser nữa
+            var bookingWindow = new BookingWindow(pond);
             bookingWindow.ShowDialog();
 
             LoadPonds();
             LoadDashboardStats();
         }
-
-
 
         private void AddLake_Click(object sender, RoutedEventArgs e)
         {
@@ -122,8 +116,8 @@ namespace Fishing_Lake
                 {
                     pond.IsDeleted = true;
                     context.SaveChanges();
-                    MessageBox.Show($"✅ Hồ '{pond.Name}' đã được ẩn!");
-                    LoadPonds(); // Reload danh sách hồ
+                    MessageBox.Show($"✅ Pond '{pond.Name}' has been hidden!");
+                    LoadPonds();
                 }
             }
         }
@@ -138,16 +132,11 @@ namespace Fishing_Lake
                 {
                     pond.IsDeleted = false;
                     context.SaveChanges();
-                    MessageBox.Show($"✅ Hồ '{pond.Name}' đã được hiện lại!");
-                    LoadPonds(); // Reload danh sách hồ
+                    MessageBox.Show($"✅ Pond '{pond.Name}' has been restored!");
+                    LoadPonds();
                 }
             }
         }
-
-
-
-
-
 
         private void OpenCustomerManagement_Click(object sender, RoutedEventArgs e)
         {
@@ -161,7 +150,6 @@ namespace Fishing_Lake
             window.ShowDialog();
         }
 
-
         private readonly BookingService _bookingService = new BookingService();
 
         private void LoadDashboardStats()
@@ -174,13 +162,10 @@ namespace Fishing_Lake
             RevenueTextBlock.Text = $"{revenue:N0}đ";
 
             int activeCustomers = _bookingService.GetActiveCustomerCountToday(ownerId);
-            ActiveCustomerTextBlock.Text = $"{activeCustomers} cần thủ";
+            ActiveCustomerTextBlock.Text = $"{activeCustomers} anglers";
 
             int totalBookingCount = _bookingService.GetTotalBookingsToday(ownerId);
-            TotalBookingTextBlock.Text = $"{totalBookingCount} lượt đặt hồ";
+            TotalBookingTextBlock.Text = $"{totalBookingCount} bookings";
         }
-
-
-
     }
 }

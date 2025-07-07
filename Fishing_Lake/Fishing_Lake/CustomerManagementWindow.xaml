@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
-        Title="Quản lý khách hàng" Height="500" Width="800"
+        Title="Customer Management" Height="500" Width="800"
         WindowStartupLocation="CenterScreen" Background="#e0f7fa">
+
     <DockPanel Margin="10">
 
-        <!-- Ô tìm kiếm -->
+        <!-- Search bar -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,10">
-            <TextBlock Text="🔍 Tìm kiếm: " VerticalAlignment="Center"/>
+            <TextBlock Text="🔍 Search: " VerticalAlignment="Center"/>
             <TextBox x:Name="SearchBox" Width="200" Margin="5,0" TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
 
-        <!-- Danh sách khách hàng -->
+        <!-- Customer list -->
         <ListView x:Name="CustomerListView">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Tên" Width="150" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="SĐT" Width="120" DisplayMemberBinding="{Binding Phone}" />
+                    <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Phone" Width="120" DisplayMemberBinding="{Binding Phone}" />
                     <GridViewColumn Header="VIP" Width="50" DisplayMemberBinding="{Binding IsVipText}" />
-                    <GridViewColumn Header="Lượt đi câu" Width="100" DisplayMemberBinding="{Binding TotalBookings}" />
-                    
+                    <GridViewColumn Header="Total Visits" Width="100" DisplayMemberBinding="{Binding TotalBookings}" />
                 </GridView>
             </ListView.View>
         </ListView>

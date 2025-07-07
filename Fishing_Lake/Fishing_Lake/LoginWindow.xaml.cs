@@ -1,5 +1,4 @@
 ﻿using Fishing_Lake.BLL.Services;
-
 using FishingLake.DAL.Models;
 using System.Windows;
 
@@ -21,7 +20,7 @@ namespace Fishing_Lake
 
             if (string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu.", "Thiếu thông tin", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please enter both phone number and password.", "Missing Information", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -29,19 +28,19 @@ namespace Fishing_Lake
 
             if (user == null)
             {
-                MessageBox.Show("Sai số điện thoại hoặc mật khẩu.", "Đăng nhập thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Incorrect phone number or password.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (user.Role != 1) // Chỉ cho phép "chủ hồ" đăng nhập
+            if (user.Role != 1) // Only pond owners are allowed to log in
             {
-                MessageBox.Show("Chỉ chủ hồ mới được đăng nhập vào hệ thống này.", "Truy cập bị từ chối", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show("Only pond owners are allowed to access this system.", "Access Denied", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
 
-            // Đăng nhập thành công
+            // Successful login
             MainWindow mainWindow = new MainWindow();
-            mainWindow.CurrentUser = user; // Gán user nếu cần truyền thông tin
+            mainWindow.CurrentUser = user; // Pass the user object if needed
             mainWindow.Show();
 
             this.Close();
@@ -50,7 +49,7 @@ namespace Fishing_Lake
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.ShowDialog(); // mở dạng modal
+            registerWindow.ShowDialog(); // Open as modal
         }
     }
 }

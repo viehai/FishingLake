@@ -3,11 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
         Title="BookingWindow" Height="450" Width="800" 
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" Background="#e0f7fa">
+
+    <Window.Resources>
+        <Style TargetType="DatePickerTextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,31 +23,34 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Thông Tin Khách Hàng" 
+        <TextBlock Text="Customer Information" 
                    FontSize="18" FontWeight="Bold"
                    HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
         <StackPanel Grid.Row="1" Margin="0,10,0,20">
-            <TextBlock Text="Tên khách:"/>
+            <TextBlock Text="Full Name:"/>
             <TextBox x:Name="txtCustomerName" Margin="0,5"/>
 
-            <TextBlock Text="Số điện thoại:"/>
+            <TextBlock Text="Phone Number:"/>
             <TextBox x:Name="txtPhone" Margin="0,5"/>
 
-            <TextBlock Text="Ngày đặt:"/>
-            <DatePicker x:Name="dpBookingDate" Margin="0,5"/>
+            <TextBlock Text="Booking Date:"/>
+            <DatePicker x:Name="dpBookingDate"
+            DisplayDateStart="{x:Static sys:DateTime.Today}"
+             />
 
-            <TextBlock Text="Giá tiền (VNĐ):"/>
+
+            <TextBlock Text="Price (VND):"/>
             <TextBox x:Name="txtPrice" Margin="0,5"/>
 
-            <TextBlock Text="Ghi chú:"/>
+            <TextBlock Text="Note:"/>
             <TextBox x:Name="txtNote" Margin="0,5"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Đặt Hồ" Width="100" Margin="5" Click="ConfirmBooking_Click"
+            <Button Content="Confirm" Width="100" Margin="5" Click="ConfirmBooking_Click"
                     Background="#27ae60" Foreground="White"/>
-            <Button Content="Huỷ" Width="100" Margin="5" Click="Cancel_Click"
+            <Button Content="Cancel" Width="100" Margin="5" Click="Cancel_Click"
                     Background="#c0392b" Foreground="White"/>
         </StackPanel>
     </Grid>

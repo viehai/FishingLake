@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Fishing_Lake.BLL.Services;
 
 namespace Fishing_Lake
@@ -37,13 +26,12 @@ namespace Fishing_Lake
 
             if (error != null)
             {
-                MessageBox.Show(error, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            MessageBox.Show("Đăng ký thành công! Hãy đăng nhập để tiếp tục.", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close(); // Đóng cửa sổ đăng ký, quay lại login
+            MessageBox.Show("Registration successful! Please log in to continue.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Close(); // Close the registration window and return to login
         }
     }
-
 }

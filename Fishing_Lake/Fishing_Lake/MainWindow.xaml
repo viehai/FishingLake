@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
         Title="FishingHub Dashboard" Height="600" Width="1200"
@@ -11,104 +10,93 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <!-- Sidebar -->
             <ColumnDefinition Width="*"/>
-            <!-- Main Content -->
         </Grid.ColumnDefinitions>
 
         <!-- SIDEBAR -->
         <StackPanel Background="#2C3E50" Grid.Column="0">
             <TextBlock Text="🎣 FishingHub" FontSize="20" FontWeight="Bold"
                        Foreground="White" Margin="10"/>
-            <Button Content="🏠 Tổng quan" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
-            <Button Content="📦 Hồ câu" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
-            <Button Content="🐟 Loài cá" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0"/>
-            <Button Content="🕘 Lịch sử đặt hồ" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0" Click="HistoryBookingButton_Click"/>
-            <Button Content="🧑 Khách hàng" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0" Click="OpenCustomerManagement_Click"/>
+            <Button Content="🕘 Booking History" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0" Click="HistoryBookingButton_Click"/>
+            <Button Content="🧑 Customers" Margin="10" Foreground="White" Background="Transparent" BorderThickness="0" Click="OpenCustomerManagement_Click" />
         </StackPanel>
 
         <!-- MAIN CONTENT -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
-                <!-- Header -->
                 <RowDefinition Height="*"/>
-                <!-- Content -->
             </Grid.RowDefinitions>
 
             <!-- HEADER -->
             <DockPanel Background="#ecf0f1" Grid.Row="0" LastChildFill="False" VerticalAlignment="Center">
-                <TextBlock Text="📊 Danh Sách Hồ Câu" FontSize="20" FontWeight="Bold" Margin="20,0"
+                <TextBlock Text="📊 Pond List" FontSize="20" FontWeight="Bold" Margin="20,0"
                            VerticalAlignment="Center"/>
                 <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,20,0">
-                    <TextBlock x:Name="WelcomeTextBlock" Text="Xin chào!" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="WelcomeTextBlock" Text="Welcome!" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
                     <Ellipse Width="32" Height="32" Fill="Gray"/>
                 </StackPanel>
             </DockPanel>
 
             <!-- CONTENT AREA -->
             <StackPanel Grid.Row="1" Margin="10">
-                <!-- CARD THỐNG KÊ -->
+                <!-- STATISTICS CARDS -->
                 <UniformGrid Columns="3" Margin="0,0,0,20">
                     <Border Background="#3498db" CornerRadius="10" Padding="10" Margin="5">
                         <StackPanel>
-                            <TextBlock Text="Doanh thu ngày hôm nay" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock Text="Today's Revenue" Foreground="White" FontWeight="Bold"/>
                             <TextBlock x:Name="RevenueTextBlock" Text="0 VND" Foreground="White" FontSize="18"/>
                         </StackPanel>
                     </Border>
                     <Border Background="#2ecc71" CornerRadius="10" Padding="10" Margin="5">
                         <StackPanel>
-                            <TextBlock Text="Khách hàng đang câu" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock x:Name="ActiveCustomerTextBlock" Text="0 cần thủ" Foreground="White" FontSize="18"/>
-
+                            <TextBlock Text="Active Customers" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock x:Name="ActiveCustomerTextBlock" Text="0 anglers" Foreground="White" FontSize="18"/>
                         </StackPanel>
                     </Border>
                     <Border Background="#e74c3c" CornerRadius="10" Padding="10" Margin="5">
                         <StackPanel>
-                            <TextBlock Text="Tổng số người booking trong hôm nay" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock x:Name="TotalBookingTextBlock" Text="0 lượt booking" Foreground="White" FontSize="18"/>
+                            <TextBlock Text="Total Bookings Today" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock x:Name="TotalBookingTextBlock" Text="0 bookings" Foreground="White" FontSize="18"/>
                         </StackPanel>
                     </Border>
                 </UniformGrid>
 
-                <!-- DANH SÁCH HỒ CÂU -->
+                <!-- POND LIST -->
                 <ListView x:Name="LakeListView" Height="300">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Tên Hồ" Width="150" DisplayMemberBinding="{Binding Name}"/>
-                            <GridViewColumn Header="Địa Chỉ" Width="200" DisplayMemberBinding="{Binding Location}"/>
-                            <GridViewColumn Header="Loài Cá" Width="200" DisplayMemberBinding="{Binding FishSpeciesList}"/>
-                            <GridViewColumn Header="Sức Chứa" Width="100" DisplayMemberBinding="{Binding Capacity}"/>
-                            <GridViewColumn Header="Hành Động" Width="250">
+                            <GridViewColumn Header="Pond Name" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Location" Width="200" DisplayMemberBinding="{Binding Location}"/>
+                            <GridViewColumn Header="Fish Species" Width="200" DisplayMemberBinding="{Binding FishSpeciesList}"/>
+                            <GridViewColumn Header="Capacity" Width="100" DisplayMemberBinding="{Binding Capacity}"/>
+                            <GridViewColumn Header="Actions" Width="250">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal"
-                        Opacity="{Binding IsDeleted, Converter={StaticResource BoolToOpacityConverter}}">
-
-                                            <!-- Nút Đặt Hồ -->
-                                            <Button Content="Đặt Hồ"
-                        Click="BookLake_Click"
-                        Tag="{Binding Id}"
-                        Padding="5"
-                        Margin="0,0,5,0"
-                        IsEnabled="{Binding IsDeleted, Converter={StaticResource InverseBoolConverter}}"/>
-
-                                            <!-- Nút Sửa -->
-                                            <Button Content="Sửa"
-                        Click="EditLake_Click"
-                        Tag="{Binding Id}"
-                        Padding="5"
-                        Margin="0,0,5,0"
-                        IsEnabled="{Binding IsDeleted, Converter={StaticResource InverseBoolConverter}}"/>
-
-                                            <!-- Nút Ẩn -->
-                                            <Button Content="Ẩn"
-                        Click="HideLake_Click"
-                        Tag="{Binding Id}"
-                        Padding="5"
-                        Background="#e67e22"
-                        Foreground="White"
-                        Margin="0,0,5,0">
+                                                    Opacity="{Binding IsDeleted, Converter={StaticResource BoolToOpacityConverter}}">
+                                            <!-- Book Button -->
+                                            <Button Content="Book"
+                                                    Click="BookLake_Click"
+                                                    Tag="{Binding Id}"
+                                                    Padding="5"
+                                                    Margin="0,0,5,0"
+                                                    IsEnabled="{Binding IsDeleted, Converter={StaticResource InverseBoolConverter}}"/>
+                                            <!-- Edit Button -->
+                                            <Button Content="Edit"
+                                                    Click="EditLake_Click"
+                                                    Tag="{Binding Id}"
+                                                    Padding="5"
+                                                    Margin="0,0,5,0"
+                                                    IsEnabled="{Binding IsDeleted, Converter={StaticResource InverseBoolConverter}}"/>
+                                            <!-- Hide Button -->
+                                            <Button Content="Hide"
+                                                    Click="HideLake_Click"
+                                                    Tag="{Binding Id}"
+                                                    Padding="5"
+                                                    Background="#e67e22"
+                                                    Foreground="White"
+                                                    Margin="0,0,5,0">
                                                 <Button.Style>
                                                     <Style TargetType="Button">
                                                         <Setter Property="Visibility" Value="Visible"/>
@@ -120,14 +108,13 @@
                                                     </Style>
                                                 </Button.Style>
                                             </Button>
-
-                                            <!-- Nút Hiện Lại -->
-                                            <Button Content="Hiện Lại"
-                        Click="RestoreLake_Click"
-                        Tag="{Binding Id}"
-                        Padding="5"
-                        Background="Green"
-                        Foreground="White">
+                                            <!-- Restore Button -->
+                                            <Button Content="Restore"
+                                                    Click="RestoreLake_Click"
+                                                    Tag="{Binding Id}"
+                                                    Padding="5"
+                                                    Background="Green"
+                                                    Foreground="White">
                                                 <Button.Style>
                                                     <Style TargetType="Button">
                                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -139,7 +126,6 @@
                                                     </Style>
                                                 </Button.Style>
                                             </Button>
-
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -148,7 +134,7 @@
                     </ListView.View>
                 </ListView>
 
-                <Button Content="➕ Thêm Hồ Câu" Width="150" Height="35" 
+                <Button Content="➕ Add Pond" Width="150" Height="35"
                         HorizontalAlignment="Right" Margin="10"
                         Click="AddLake_Click"/>
             </StackPanel>

@@ -17,7 +17,7 @@ namespace Fishing_Lake
         private bool isEditMode = false;
         private Pond? editingPond;
 
-        public DetailWindow(User currentUser) // Tạo mới
+        public DetailWindow(User currentUser) // Create new pond
         {
             InitializeComponent();
             Loaded += Window_Loaded;
@@ -52,7 +52,7 @@ namespace Fishing_Lake
             txtLocation.Text = pond.Location;
             txtDescription.Text = pond.Description;
             txtCapacity.Text = pond.Capacity.ToString();
-            txtOwnerId.Text = pond.Owner?.Name ?? "Không rõ";
+            txtOwnerId.Text = pond.Owner?.Name ?? "Unknown";
 
             pondFishList = pond.PondFishes.ToList();
             dgFishList.ItemsSource = pondFishList;
@@ -62,17 +62,17 @@ namespace Fishing_Lake
         {
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                MessageBox.Show("Tên hồ không được để trống.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Pond name cannot be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtLocation.Text))
             {
-                MessageBox.Show("Vị trí không được để trống.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Location cannot be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             if (!int.TryParse(txtCapacity.Text, out int capacity) || capacity <= 0)
             {
-                MessageBox.Show("Dung lượng phải là số nguyên dương.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Capacity must be a positive integer.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             return true;
@@ -96,7 +96,7 @@ namespace Fishing_Lake
             else
             {
                 pond = new Pond();
-                pond.OwnerId = _currentUser.Id; // Gán đúng OwnerId khi tạo mới
+                pond.OwnerId = _currentUser.Id; // Assign correct OwnerId when creating
             }
 
             pond.Name = name;
@@ -108,17 +108,16 @@ namespace Fishing_Lake
             if (isEditMode)
             {
                 _pondService.UpdatePond(pond);
-                MessageBox.Show("Cập nhật hồ thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Pond updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 _pondService.AddPond(pond);
-                MessageBox.Show("Tạo hồ thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Pond created successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
             this.Close();
         }
-
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {

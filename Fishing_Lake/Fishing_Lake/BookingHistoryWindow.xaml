@@ -5,22 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fishing_Lake"
         mc:Ignorable="d"
-                Title="Lịch Sử Đặt Hồ" Height="500" Width="850"
+        Title="Booking History" Height="500" Width="850"
         WindowStartupLocation="CenterScreen" Background="#e0f7fa">
+
     <StackPanel Margin="10">
+        <!-- Search Bar -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,10">
-            <TextBlock Text="🔍 Tìm kiếm: " VerticalAlignment="Center"/>
+            <TextBlock Text="🔍 Search: " VerticalAlignment="Center"/>
             <TextBox x:Name="SearchBox" Width="200" Margin="5,0" TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
 
+        <!-- Booking History List -->
         <ListView x:Name="HistoryListView" Height="400">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Khách hàng" Width="160" DisplayMemberBinding="{Binding CustomerName}"/>
-                    <GridViewColumn Header="SĐT" Width="120" DisplayMemberBinding="{Binding Phone}"/>
-                    <GridViewColumn Header="Hồ câu" Width="160" DisplayMemberBinding="{Binding PondName}"/>
-                    <GridViewColumn Header="Ngày câu" Width="100" DisplayMemberBinding="{Binding BookingDate}"/>
-                    <GridViewColumn Header="Giá (VNĐ)" Width="100" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="Customer Name" Width="160" DisplayMemberBinding="{Binding CustomerName}"/>
+                    <GridViewColumn Header="Phone" Width="120" DisplayMemberBinding="{Binding Phone}"/>
+                    <GridViewColumn Header="Pond Name" Width="160" DisplayMemberBinding="{Binding PondName}"/>
+                    <GridViewColumn Header="Booking Date" Width="100" DisplayMemberBinding="{Binding BookingDate}"/>
+                    <GridViewColumn Header="Price (VND)" Width="100" DisplayMemberBinding="{Binding Price}"/>
                 </GridView>
             </ListView.View>
         </ListView>

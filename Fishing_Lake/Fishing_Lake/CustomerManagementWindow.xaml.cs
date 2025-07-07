@@ -31,7 +31,7 @@ namespace Fishing_Lake
                     c.Id,
                     c.Name,
                     c.Phone,
-                    IsVipText = c.IsVip == true ? "Có" : "Không",
+                    IsVipText = c.IsVip == true ? "Yes" : "No",
                     c.TotalBookings
                 }).ToList();
 
