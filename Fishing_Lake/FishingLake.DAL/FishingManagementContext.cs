@@ -87,9 +87,7 @@ public partial class FishingManagementContext : DbContext
 
             entity.ToTable("PondFish");
 
-            entity.Property(e => e.Quantity).HasDefaultValue(0);
-
-            entity.HasOne(d => d.Fish).WithMany(p => p.PondFishes)
+entity.HasOne(d => d.Fish).WithMany(p => p.PondFishes)
                 .HasForeignKey(d => d.FishId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__PondFish__FishId__5629CD9C");

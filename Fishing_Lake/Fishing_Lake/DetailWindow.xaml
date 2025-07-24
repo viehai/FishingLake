@@ -39,8 +39,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                    <Label Content="Owner (Owner ID):"/>
-                    <TextBox x:Name="txtOwnerId" Height="30"/>
+                    
 
                     <Label Content="Fish Species in Pond:"/>
                     <DataGrid x:Name="dgFishList" AutoGenerateColumns="False" Height="180" CanUserAddRows="True">
@@ -48,9 +47,11 @@
                             <DataGridComboBoxColumn Header="Fish Species" SelectedValueBinding="{Binding FishId}" 
                                                     DisplayMemberPath="Name" SelectedValuePath="Id"
                             ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=fishSpecies}" />
-                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                            
                         </DataGrid.Columns>
                     </DataGrid>
+                    
+                    
                 </StackPanel>
             </Grid>
 

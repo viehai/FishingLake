@@ -11,8 +11,6 @@ public partial class PondFish
 
     public int FishId { get; set; }
 
-    public int? Quantity { get; set; }
-
     public virtual FishSpecies Fish { get; set; } = null!;
 
     public virtual Pond Pond { get; set; } = null!;

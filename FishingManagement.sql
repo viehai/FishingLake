@@ -1,21 +1,16 @@
-﻿-- Tạo Database nếu cần
-CREATE DATABASE FishingManagement;
+﻿CREATE DATABASE FishingManagement;
 GO
 
 USE FishingManagement;
 GO
 
-USE master;
-ALTER DATABASE FishingManagement SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-DROP DATABASE FishingManagement;
 
--- 1. USERS: khách và chủ hồ
 CREATE TABLE Users (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Phone NVARCHAR(20) UNIQUE NOT NULL,
-    PasswordHash NVARCHAR(255),           -- chỉ dùng cho chủ hồ
-    Role INT NOT NULL DEFAULT 2,           -- 1 = Chủ hồ, 2 = Khách
+    PasswordHash NVARCHAR(255),           
+    Role INT NOT NULL DEFAULT 2,   -- 1 = Chủ hồ, 2 = Khách
     TotalBookings INT DEFAULT 0,
     IsVIP BIT DEFAULT 0
 );
@@ -24,21 +19,18 @@ CREATE TABLE Users (
 INSERT INTO Users (Name, Phone, PasswordHash, Role)
 VALUES (N'Chủ Hồ Long', '0965120204', '123', 1);
 
--- 2. PONDS: hồ câu
 CREATE TABLE Pond (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Location NVARCHAR(255),
     Description NVARCHAR(MAX),
-    Capacity INT NOT NULL DEFAULT 20,      -- số chỗ tối đa mỗi slot
+    Capacity INT NOT NULL DEFAULT 20,
     OwnerId INT NOT NULL FOREIGN KEY REFERENCES Users(Id)
+	IsDeleted BIT NOT NULL DEFAULT 0
 );
-ALTER TABLE Pond ADD IsDeleted BIT NOT NULL DEFAULT 0;
-
 
 select * from Pond
 
--- Chèn lại dữ liệu vào Ponds
 INSERT INTO Pond (Name, Location, Description, Capacity, OwnerId)
 VALUES 
     (N'Hồ Câu A', N'123 Đường Láng, Hà Nội', N'Hồ câu đẹp, nhiều cá chép', 20, 1),
@@ -47,19 +39,20 @@ VALUES
 
 INSERT INTO Pond (Name, Location, Description, Capacity, OwnerId)
 VALUES 
-    (N'Hồ Câu Z', N'10 Trần Phú, TP.HCM', N'Hồ rộng, có cá tra và cá trắm', 30, 9),
-    (N'Hồ Câu X', N'55 Nguyễn Huệ, Cần Thơ', N'Không gian thoáng đãng, phù hợp nhóm bạn', 18, 9),
-    (N'Hồ Câu C', N'99 Phan Đình Phùng, Đà Lạt', N'Nước mát, nhiều cá hồi', 22, 9);
+    (N'Hồ Câu Z', N'10 Trần Phú, TP.HCM', N'Hồ rộng, có cá tra và cá trắm', 30, 1),
+    (N'Hồ Câu X', N'55 Nguyễn Huệ, Cần Thơ', N'Không gian thoáng đãng, phù hợp nhóm bạn', 18, 1),
+    (N'Hồ Câu C', N'99 Phan Đình Phùng, Đà Lạt', N'Nước mát, nhiều cá hồi', 22, 1);
 
--- 3. FISHSPECIES: loài cá
+
 CREATE TABLE FishSpecies (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Description NVARCHAR(MAX),
     AverageWeight FLOAT
 );
-select * from FishSpecies
--- Chèn dữ liệu mẫu vào FishSpecies (nếu chưa có)
+
+
+
 INSERT INTO FishSpecies (Name, Description, AverageWeight)
 VALUES 
     (N'Cá chép', N'Loài cá phổ biến', 2.5),
@@ -79,38 +72,35 @@ VALUES
     (N'Cá rô phi', N'Cá phổ biến, sinh sản mạnh, dễ nuôi', 1.2),
     (N'Cá ngạnh', N'Cá da trơn, có ngạnh sắc nhọn', 1.7),
     (N'Cá lăng', N'Cá to, chuyên sống nơi nước chảy', 6.0);
--- 4. PONDFISH: cá có trong từng hồ
+
+
 CREATE TABLE PondFish (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     PondId INT NOT NULL FOREIGN KEY REFERENCES Pond(Id),
-    FishId INT NOT NULL FOREIGN KEY REFERENCES FishSpecies(Id),
-    Quantity INT DEFAULT 0
+    FishId INT NOT NULL FOREIGN KEY REFERENCES FishSpecies(Id)
 );
-INSERT INTO PondFish (PondId, FishId, Quantity)
+
+
+select * from PondFish
+
+INSERT INTO PondFish (PondId, FishId)
 VALUES 
-    (1, 1, 50),
-    (1, 2, 30),
-    (2, 3, 40),
-    (2, 4, 20),
-    (3, 4, 25);
+    (1, 1),
+    (1, 2),
+    (2, 3),
+    (2, 4),
+    (3, 4);
 
-
-
--- Nếu bảng Booking đã tạo rồi ➜ xóa đi tạo lại hoặc ALTER TABLE
-
-DROP TABLE IF EXISTS Bookings;
 
 CREATE TABLE Bookings (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     PondId INT NOT NULL FOREIGN KEY REFERENCES Pond(Id),
     UserId INT NOT NULL FOREIGN KEY REFERENCES Users(Id),
-    BookingDate DATE NOT NULL,               -- ngày câu
+    BookingDate DATE NOT NULL,               
     Note NVARCHAR(MAX),
-    
-    Price MONEY DEFAULT 0,                   -- giá tiền
-    
-    PaymentTime DATETIME NULL,               -- thời gian thanh toán
-    PaymentMethod NVARCHAR(50) DEFAULT 'Cash'-- mặc định là tiền mặt
+	Price MONEY DEFAULT 0,
+	PaymentTime DATETIME NULL,               
+    PaymentMethod NVARCHAR(50) DEFAULT 'Cash'
 );
 
 select * from Bookings

@@ -52,7 +52,7 @@ namespace Fishing_Lake
             txtLocation.Text = pond.Location;
             txtDescription.Text = pond.Description;
             txtCapacity.Text = pond.Capacity.ToString();
-            txtOwnerId.Text = pond.Owner?.Name ?? "Unknown";
+            
 
             pondFishList = pond.PondFishes.ToList();
             dgFishList.ItemsSource = pondFishList;
