@@ -1,11 +1,12 @@
 ﻿
 using FishingLake.DAL;
 using FishingLake.DAL.Models;
+using FishingLake.DAL.Repositories;
 using System.Linq;
 
 namespace Fishing_Lake.DAL.Repositories
 {
-    public class UserRepository
+    public class UserRepository: IUserRepository
     {
         private FishingManagementContext? _context;
 

@@ -3,8 +3,9 @@ using FishingLake.DAL;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using FishingLake.DAL.Repositories;
 
-public class PondRepository
+public class PondRepository:IPondRepository
 {
     private FishingManagementContext _context;
 

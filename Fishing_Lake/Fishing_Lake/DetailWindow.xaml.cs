@@ -13,15 +13,16 @@ namespace Fishing_Lake
         private List<PondFish> pondFishList = new();
         private List<FishSpecies> fishSpecies = new();
 
-        private PondService _pondService = new();
+        private readonly PondService _pondService;
         private bool isEditMode = false;
         private Pond? editingPond;
 
-        public DetailWindow(User currentUser) // Create new pond
+        public DetailWindow(User currentUser)
         {
             InitializeComponent();
             Loaded += Window_Loaded;
             _currentUser = currentUser;
+            _pondService = new PondService(new PondRepository());
         }
 
         public DetailWindow(Pond selectedPond, User currentUser) : this(currentUser)
@@ -52,7 +53,6 @@ namespace Fishing_Lake
             txtLocation.Text = pond.Location;
             txtDescription.Text = pond.Description;
             txtCapacity.Text = pond.Capacity.ToString();
-            
 
             pondFishList = pond.PondFishes.ToList();
             dgFishList.ItemsSource = pondFishList;
@@ -96,7 +96,7 @@ namespace Fishing_Lake
             else
             {
                 pond = new Pond();
-                pond.OwnerId = _currentUser.Id; // Assign correct OwnerId when creating
+                pond.OwnerId = _currentUser.Id;
             }
 
             pond.Name = name;
@@ -124,4 +124,5 @@ namespace Fishing_Lake
             this.Close();
         }
     }
+
 }

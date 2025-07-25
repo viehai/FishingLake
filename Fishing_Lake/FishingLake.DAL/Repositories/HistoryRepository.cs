@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FishingLake.DAL.Repositories
 {
-    public class HistoryRepository
+    public class HistoryRepository: IHistoryRepository
     {
         public List<Booking> GetAll()
         {

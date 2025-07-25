@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace FishingLake.DAL.Repositories
 {
-    public class CustomerRepository
+    public class CustomerRepository:ICustomerRepository
     {
         public List<User> GetAll()
         {
@@ -27,9 +27,6 @@ namespace FishingLake.DAL.Repositories
                 .Where(b => b.Pond.OwnerId == ownerId)
                 .ToList();
         }
-
-
-
 
         public List<User> Search(string keyword)
         {

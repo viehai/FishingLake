@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Fishing_Lake.BLL.Services;
+using Fishing_Lake.DAL.Repositories;
+using System;
 using System.Windows;
-using Fishing_Lake.BLL.Services;
 
 namespace Fishing_Lake
 {
@@ -9,11 +10,12 @@ namespace Fishing_Lake
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        private UserService _service = new();
+        private readonly UserService _service;
 
         public RegisterWindow()
         {
             InitializeComponent();
+            _service = new UserService(new UserRepository());
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -31,7 +33,7 @@ namespace Fishing_Lake
             }
 
             MessageBox.Show("Registration successful! Please log in to continue.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close(); // Close the registration window and return to login
+            this.Close();
         }
     }
 }

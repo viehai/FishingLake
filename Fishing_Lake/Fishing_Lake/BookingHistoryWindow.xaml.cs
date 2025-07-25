@@ -3,22 +3,22 @@ using System.Windows;
 using System.Windows.Controls;
 using FishingLake.BLL.Services;
 using FishingLake.DAL.Models;
+using FishingLake.DAL.Repositories;
 
 namespace Fishing_Lake
 {
     public partial class BookingHistoryWindow : Window
     {
         private readonly HistoryService _historyService;
-        private User _currentUser;
+        private readonly User _currentUser;
 
         public BookingHistoryWindow(User currentUser)
         {
             InitializeComponent();
-            _historyService = new HistoryService();
             _currentUser = currentUser;
+            _historyService = new HistoryService(new HistoryRepository());
             LoadData("");
         }
-
 
         private void LoadData(string keyword)
         {
@@ -35,7 +35,6 @@ namespace Fishing_Lake
 
             HistoryListView.ItemsSource = formatted;
         }
-
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {

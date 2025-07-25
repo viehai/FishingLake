@@ -1,4 +1,5 @@
 ﻿using Fishing_Lake.BLL.Services;
+using Fishing_Lake.DAL.Repositories;
 using FishingLake.DAL.Models;
 using System.Windows;
 
@@ -6,11 +7,12 @@ namespace Fishing_Lake
 {
     public partial class LoginWindow : Window
     {
-        private UserService _service = new();
+        private readonly UserService _service;
 
         public LoginWindow()
         {
             InitializeComponent();
+            _service = new UserService(new UserRepository());
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -32,24 +34,24 @@ namespace Fishing_Lake
                 return;
             }
 
-            if (user.Role != 1) // Only pond owners are allowed to log in
+            if (user.Role != 1)
             {
                 MessageBox.Show("Only pond owners are allowed to access this system.", "Access Denied", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
 
-            // Successful login
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.CurrentUser = user; // Pass the user object if needed
+            MainWindow mainWindow = new MainWindow
+            {
+                CurrentUser = user
+            };
             mainWindow.Show();
-
             this.Close();
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.ShowDialog(); // Open as modal
+            registerWindow.ShowDialog();
         }
     }
 }

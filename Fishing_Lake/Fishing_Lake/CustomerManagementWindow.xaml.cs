@@ -1,12 +1,13 @@
 ﻿// CustomerManagementWindow.xaml.cs - xử lý UI danh sách khách hàng
 
+using FishingLake.BLL.Services;
+using FishingLake.DAL.Models;
+using FishingLake.DAL.Repositories;
+using FishingLake.Services;
 using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using FishingLake.BLL.Services;
-using FishingLake.Services;
-using FishingLake.DAL.Models;
 
 namespace Fishing_Lake
 {
@@ -18,8 +19,8 @@ namespace Fishing_Lake
         public CustomerManagementWindow(User currentUser)
         {
             InitializeComponent();
-            _customerService = new CustomerService();
             _currentUser = currentUser;
+            _customerService = new CustomerService(new CustomerRepository());
             LoadCustomers();
         }
 
@@ -38,12 +39,10 @@ namespace Fishing_Lake
             CustomerListView.ItemsSource = customers;
         }
 
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             LoadCustomers(SearchBox.Text);
         }
-
-
     }
+
 }

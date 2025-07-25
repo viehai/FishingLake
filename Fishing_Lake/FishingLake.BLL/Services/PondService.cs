@@ -1,33 +1,19 @@
 ﻿using FishingLake.DAL.Models;
+using FishingLake.DAL.Repositories;
 using System.Collections.Generic;
 
 public class PondService
 {
-    private readonly PondRepository _repo = new();
+    private readonly IPondRepository _repo;
 
-    public List<Pond> GetAllPonds()
+    public PondService(IPondRepository repo)
     {
-        return _repo.GetAll();
-    }
-    public List<Pond> GetPondsByOwner(int ownerId, bool includeHidden = false)
-    {
-        return _repo.GetByOwnerId(ownerId, includeHidden);
+        _repo = repo;
     }
 
-
-
-    public void AddPond(Pond pond)
-    {
-        _repo.Add(pond);
-    }
-
-    public void UpdatePond(Pond pond)
-    {
-        _repo.Update(pond);
-    }
-
-    public void DeletePond(Pond pond)
-    {
-        _repo.Delete(pond);
-    }
+    public List<Pond> GetAllPonds() => _repo.GetAll();
+    public List<Pond> GetPondsByOwner(int ownerId, bool includeHidden = false) => _repo.GetByOwnerId(ownerId, includeHidden);
+    public void AddPond(Pond pond) => _repo.Add(pond);
+    public void UpdatePond(Pond pond) => _repo.Update(pond);
+    public void DeletePond(Pond pond) => _repo.Delete(pond);
 }

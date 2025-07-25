@@ -1,4 +1,9 @@
-﻿using System.Text;
+﻿using FishingLake.DAL;
+using FishingLake.DAL.Models;
+using FishingLake.DAL.Repositories;
+using FishingLake.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,21 +13,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FishingLake.DAL.Models;
-using FishingLake.DAL;
-using Microsoft.EntityFrameworkCore;
-using FishingLake.Services;
 
 namespace Fishing_Lake
 {
+
     public partial class MainWindow : Window
     {
         public User? CurrentUser { get; set; }
+        private readonly PondService _pondService;
+        private readonly BookingService _bookingService;
 
         public MainWindow()
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
+
+            _pondService = new PondService(new PondRepository());
+            _bookingService = new BookingService(new BookingRepository());
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -35,16 +42,9 @@ namespace Fishing_Lake
             }
         }
 
-        private PondService _pondService = new PondService();
-
         private void LoadPonds()
         {
-            using var context = new FishingManagementContext();
-            var ponds = context.Pond
-                .Where(p => p.OwnerId == CurrentUser.Id)
-                .Include(p => p.PondFishes)
-                .ThenInclude(pf => pf.Fish)
-                .ToList()
+            var ponds = _pondService.GetPondsByOwner(CurrentUser.Id, true)
                 .Select(p => new
                 {
                     p.Id,
@@ -66,8 +66,7 @@ namespace Fishing_Lake
                 return;
             }
 
-            using var context = new FishingManagementContext();
-            var pond = context.Pond.Find(pondId);
+            var pond = _pondService.GetPondsByOwner(CurrentUser.Id, true).FirstOrDefault(p => p.Id == pondId);
             if (pond == null)
             {
                 MessageBox.Show("Pond does not exist.");
@@ -90,19 +89,17 @@ namespace Fishing_Lake
 
         private void EditLake_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            int pondId = (int)button.Tag;
-
-            using (var context = new FishingManagementContext())
+            if (sender is Button button && int.TryParse(button.Tag.ToString(), out int pondId))
             {
-                var pond = context.Pond
-                    .Include(p => p.PondFishes)
-                    .ThenInclude(pf => pf.Fish)
-                    .FirstOrDefault(p => p.Id == pondId && p.OwnerId == CurrentUser.Id);
+                var pond = _pondService.GetPondsByOwner(CurrentUser.Id, true)
+                    .FirstOrDefault(p => p.Id == pondId);
 
-                var detailWindow = new DetailWindow(pond, CurrentUser);
-                detailWindow.ShowDialog();
-                LoadPonds();
+                if (pond != null)
+                {
+                    var detailWindow = new DetailWindow(pond, CurrentUser);
+                    detailWindow.ShowDialog();
+                    LoadPonds();
+                }
             }
         }
 
@@ -110,12 +107,11 @@ namespace Fishing_Lake
         {
             if (sender is Button btn && int.TryParse(btn.Tag.ToString(), out int pondId))
             {
-                var context = new FishingManagementContext();
-                var pond = context.Pond.FirstOrDefault(p => p.Id == pondId);
+                var pond = _pondService.GetPondsByOwner(CurrentUser.Id, true).FirstOrDefault(p => p.Id == pondId);
                 if (pond != null)
                 {
                     pond.IsDeleted = true;
-                    context.SaveChanges();
+                    _pondService.UpdatePond(pond);
                     MessageBox.Show($"✅ Pond '{pond.Name}' has been hidden!");
                     LoadPonds();
                 }
@@ -126,12 +122,11 @@ namespace Fishing_Lake
         {
             if (sender is Button btn && int.TryParse(btn.Tag.ToString(), out int pondId))
             {
-                var context = new FishingManagementContext();
-                var pond = context.Pond.FirstOrDefault(p => p.Id == pondId);
+                var pond = _pondService.GetPondsByOwner(CurrentUser.Id, true).FirstOrDefault(p => p.Id == pondId);
                 if (pond != null)
                 {
                     pond.IsDeleted = false;
-                    context.SaveChanges();
+                    _pondService.UpdatePond(pond);
                     MessageBox.Show($"✅ Pond '{pond.Name}' has been restored!");
                     LoadPonds();
                 }
@@ -149,8 +144,6 @@ namespace Fishing_Lake
             var window = new BookingHistoryWindow(CurrentUser);
             window.ShowDialog();
         }
-
-        private readonly BookingService _bookingService = new BookingService();
 
         private void LoadDashboardStats()
         {

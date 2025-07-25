@@ -1,21 +1,24 @@
 ﻿// BookingWindow.xaml.cs – Interface for entering customer name, phone, date & price
+using FishingLake.DAL.Models;
+using FishingLake.DAL.Repositories;
+using FishingLake.Services;
 using System;
 using System.Windows;
-using FishingLake.DAL.Models;
-using FishingLake.Services;
 
 namespace Fishing_Lake
 {
     public partial class BookingWindow : Window
     {
         private readonly Pond _pond;
-        private readonly BookingService _bookingService = new();
+        private readonly BookingService _bookingService;
 
         public BookingWindow(Pond pond)
         {
             InitializeComponent();
             _pond = pond;
-            dpBookingDate.SelectedDate = DateTime.Today; // Set today as default
+            _bookingService = new BookingService(new BookingRepository());
+
+            dpBookingDate.SelectedDate = DateTime.Today;
             dpBookingDate.DisplayDateStart = DateTime.Today;
         }
 
@@ -43,7 +46,7 @@ namespace Fishing_Lake
                 return;
             }
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(phone, @"^0[0-9]{8,10}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phone, "^0[0-9]{8,10}$"))
             {
                 MessageBox.Show("Invalid phone number. Please use a valid Vietnamese format (e.g., 0912345678).", "Invalid Phone", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;

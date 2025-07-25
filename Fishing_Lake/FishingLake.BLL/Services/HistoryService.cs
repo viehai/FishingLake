@@ -5,19 +5,16 @@ namespace FishingLake.BLL.Services
 {
     public class HistoryService
     {
-        private readonly HistoryRepository _repo;
+        private readonly IHistoryRepository _repo;
 
-        public HistoryService()
+        public HistoryService(IHistoryRepository repo)
         {
-            _repo = new HistoryRepository();
+            _repo = repo;
         }
 
         public List<Booking> GetBookings(string keyword, int ownerId)
         {
-            if (string.IsNullOrWhiteSpace(keyword))
-                return _repo.GetByOwner(ownerId);
-
-            return _repo.SearchByKeywordAndOwner(keyword, ownerId);
+            return string.IsNullOrWhiteSpace(keyword) ? _repo.GetByOwner(ownerId) : _repo.SearchByKeywordAndOwner(keyword, ownerId);
         }
     }
 }
