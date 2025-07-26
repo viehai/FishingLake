@@ -28,10 +28,10 @@ namespace FishingLake.Services
             // Lấy hồ
             var pond = _repo.GetPondById(pondId);
             if (pond == null)
-                return "Không tìm thấy hồ.";
+                return "Pond not found.";
 
             if (pond.Capacity <= 0)
-                return "Hồ đã hết chỗ cho hôm nay.";
+                return "The lake is full for today.";
 
             // Tính số booking của user theo chủ hồ
             int totalBooking = _repo.GetTotalBookingsByUserAndOwner(phone, pond.OwnerId);
@@ -48,7 +48,7 @@ namespace FishingLake.Services
                 PaymentMethod = "Cash",
                 PaymentTime = paymentTime,
                 Note = string.IsNullOrWhiteSpace(note)
-                    ? $"Hết hạn lúc 24h ngày {bookingDate:dd/MM/yyyy}"
+                    ? $"Expires at 24:00 {bookingDate:dd/MM/yyyy}"
                     : note
             };
 
@@ -57,10 +57,10 @@ namespace FishingLake.Services
             _repo.AddBooking(booking);
 
             
-            string result = $"Đã đặt hồ thành công cho khách {user.Name}!";
+            string result = $"Pool successfully booked for customer {user.Name}!";
             if (isVip)
-                result += $"\nKhách là VIP, được giảm 20%. Giá từ {price:N0}đ còn {finalPrice:N0}đ.";
-            result += $"\nHết hạn lúc 24h ngày {bookingDate:dd/MM/yyyy}.";
+                result += $"\nVIP customers get 20% off. Price from {price:N0}đ to {finalPrice:N0}đ.";
+            result += $"\nExpires at 24:00 {bookingDate:dd/MM/yyyy}.";
             return result;
         }
 

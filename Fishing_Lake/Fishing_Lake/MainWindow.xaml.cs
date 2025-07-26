@@ -112,7 +112,7 @@ namespace Fishing_Lake
                 {
                     pond.IsDeleted = true;
                     _pondService.UpdatePond(pond);
-                    MessageBox.Show($"✅ Pond '{pond.Name}' has been hidden!");
+                    MessageBox.Show($"Pond '{pond.Name}' has been hidden!");
                     LoadPonds();
                 }
             }
@@ -127,7 +127,7 @@ namespace Fishing_Lake
                 {
                     pond.IsDeleted = false;
                     _pondService.UpdatePond(pond);
-                    MessageBox.Show($"✅ Pond '{pond.Name}' has been restored!");
+                    MessageBox.Show($"Pond '{pond.Name}' has been restored!");
                     LoadPonds();
                 }
             }

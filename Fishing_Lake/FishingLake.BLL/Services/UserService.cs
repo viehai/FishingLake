@@ -17,13 +17,13 @@ namespace Fishing_Lake.BLL.Services
         public string? Register(string name, string phone, string password)
         {
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(password))
-                return "Vui lòng nhập đầy đủ thông tin.";
+                return "Please enter complete information.";
 
             if (_repo.IsPhoneTaken(phone))
-                return "Số điện thoại đã được đăng ký.";
+                return "Phone number has been registered.";
 
             if (!IsValidPhoneNumber(phone))
-                return "Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (VD: 098xxxxxxx).";
+                return "Invalid phone number. Please enter correct format (eg: 098xxxxxxx).";
 
             var user = new User { Name = name, Phone = phone, PasswordHash = password, Role = 1, TotalBookings = 0 };
             _repo.Add(user);
