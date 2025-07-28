@@ -2,29 +2,19 @@
 
 Fishing Pond Management System
 
-## Screenshots
+## Screenshots Grid
 
-### Login & Register
-![Login](images/login.png)  
-![Register](images/register.png)  
+| Login             | Register          | Dashboard          |
+|:-----------------:|:-----------------:|:------------------:|
+| <img src="images/login.png"   width="200"/> | <img src="images/register.png" width="200"/> | <img src="images/dashboard.png"  width="200"/> |
 
-### Dashboard
-![Dashboard](images/dashboard.png)  
+| Booking           | Booking VIP       | Booking History    |
+|:-----------------:|:-----------------:|:------------------:|
+| <img src="images/booking.png" width="200"/> | <img src="images/bookingVIP.png" width="200"/> | <img src="images/bookingHistory.png" width="200"/> |
 
-### Booking
-![Booking](images/booking.png)  
-![Booking VIP](images/bookingVIP.png)  
-
-### Lịch sử đặt câu
-![Booking History](images/bookingHistory.png)  
-
-### Quản lý khách hàng
-![Customer List](images/customerList.png)  
-
-### Thêm / Sửa mục
-![Create Pond](images/add.png)  
-![Edit pond](images/edit.png)  
-
+| Customer List     | Create Pond       | Edit Pond          |
+|:-----------------:|:-----------------:|:------------------:|
+| <img src="images/customerList.png" width="200"/> | <img src="images/add.png" width="200"/>         | <img src="images/edit.png" width="200"/>       |
 
 ## Description
 
