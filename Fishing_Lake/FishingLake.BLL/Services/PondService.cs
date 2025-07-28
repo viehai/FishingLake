@@ -15,5 +15,5 @@ public class PondService
     public List<Pond> GetPondsByOwner(int ownerId, bool includeHidden = false) => _repo.GetByOwnerId(ownerId, includeHidden);
     public void AddPond(Pond pond) => _repo.Add(pond);
     public void UpdatePond(Pond pond) => _repo.Update(pond);
-    public void DeletePond(Pond pond) => _repo.Delete(pond);
+    
 }

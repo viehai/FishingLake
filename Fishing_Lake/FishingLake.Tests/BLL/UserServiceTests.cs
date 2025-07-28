@@ -20,7 +20,7 @@ public class UserServiceTests
         var service = new UserService(repo.Object);
         var result = service.Register("Test", "0988888888", "pass123");
 
-        Assert.Equal("Số điện thoại đã được đăng ký.", result);
+        Assert.Equal("Phone number has been registered.", result);
     }
 
     [Fact]

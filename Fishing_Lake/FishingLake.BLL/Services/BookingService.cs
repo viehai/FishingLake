@@ -16,7 +16,7 @@ namespace FishingLake.Services
 
         public string BookPondForCustomer(int pondId, string customerName, string phone, DateTime bookingDate, decimal price, string note, DateTime paymentTime)
         {
-            // Lấy hoặc tạo user
+            
             var user = _repo.GetUserByPhone(phone);
             if (user == null)
             {
@@ -25,7 +25,7 @@ namespace FishingLake.Services
                 user = _repo.GetUserByPhone(phone);
             }
 
-            // Lấy hồ
+            
             var pond = _repo.GetPondById(pondId);
             if (pond == null)
                 return "Pond not found.";

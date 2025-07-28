@@ -9,6 +9,6 @@ namespace FishingLake.DAL.Repositories
         List<Booking> GetBookingsByOwner(int ownerId);
         List<User> Search(string keyword);
         User? GetById(int id);
-        void Update(User user);
+        
     }
 }

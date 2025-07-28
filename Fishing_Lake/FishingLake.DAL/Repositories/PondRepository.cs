@@ -33,12 +33,7 @@ public class PondRepository:IPondRepository
         _context.SaveChanges();
     }
 
-    public void Delete(Pond pond)
-    {
-        _context = new FishingManagementContext();
-        _context.Pond.Remove(pond);
-        _context.SaveChanges();
-    }
+    
 
     public List<Pond> GetByOwnerId(int ownerId, bool includeHidden = false)
     {

@@ -10,11 +10,9 @@ public class BookingRepositoryTests
     // - GetPondById returns correct pond
     // - AddBooking inserts booking
     // - GetTodayBookings returns bookings from today with User and Pond included
-    // - GetTotalBookingsByUserAndOwner returns correct count
 
     [Fact]
-    public void GetUserByPhone_ShouldReturnNull_WhenUserNotFound()
-    {
+    public void GetUserByPhone_ShouldReturnNull_WhenUserNotFound()    {
         var repo = new BookingRepository();
         var result = repo.GetUserByPhone("0000000000");
         Assert.Null(result);

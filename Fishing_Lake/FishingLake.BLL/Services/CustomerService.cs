@@ -17,12 +17,6 @@ namespace FishingLake.BLL.Services
             _repo = repo;
         }
 
-        public List<User> GetCustomers(string keyword = "")
-        {
-            var customers = string.IsNullOrWhiteSpace(keyword) ? _repo.GetAll() : _repo.Search(keyword);
-            return customers.OrderByDescending(c => c.IsVip).ThenByDescending(c => c.TotalBookings).ToList();
-        }
-
         public List<User> GetCustomersByOwner(int ownerId, string keyword = "")
         {
             var bookings = _repo.GetBookingsByOwner(ownerId);

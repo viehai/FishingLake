@@ -43,11 +43,6 @@ namespace FishingLake.DAL.Repositories
             return context.Users.FirstOrDefault(u => u.Id == id && u.Role == 2);
         }
 
-        public void Update(User user)
-        {
-            using var context = new FishingManagementContext();
-            context.Users.Update(user);
-            context.SaveChanges();
-        }
+        
     }
 }

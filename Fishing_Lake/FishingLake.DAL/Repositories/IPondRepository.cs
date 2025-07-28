@@ -8,7 +8,7 @@ namespace FishingLake.DAL.Repositories
         List<Pond> GetAll();
         void Add(Pond pond);
         void Update(Pond pond);
-        void Delete(Pond pond);
+        
         List<Pond> GetByOwnerId(int ownerId, bool includeHidden = false);
     }
 }
