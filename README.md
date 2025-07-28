@@ -2,6 +2,30 @@
 
 Fishing Pond Management System
 
+## Screenshots
+
+### Login & Register
+![Login](images/login.png)  
+![Register](images/register.png)  
+
+### Dashboard
+![Dashboard](images/dashboard.png)  
+
+### Booking
+![Booking](images/booking.png)  
+![Booking VIP](images/bookingVIP.png)  
+
+### Lịch sử đặt câu
+![Booking History](images/bookingHistory.png)  
+
+### Quản lý khách hàng
+![Customer List](images/customerList.png)  
+
+### Thêm / Sửa mục
+![Create Pond](images/add.png)  
+![Edit pond](images/edit.png)  
+
+
 ## Description
 
 A desktop WPF (.NET 8 / MVVM) application that helps fishing-pond owners manage ponds, fish species, bookings, customers and daily KPIs — replacing paper notebooks with a single, intuitive tool.
